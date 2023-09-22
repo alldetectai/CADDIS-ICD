@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" title="Upload Results" layout="absolute" showCloseButton="true" width="600" height="350">
+   <mx:Component id="IdRenderer">
+        <mx:VBox horizontalAlign="center" verticalAlign="middle">
+            <mx:Text text="{data.id}" height="100%" width="100%" textAlign="center" />
+        </mx:VBox>
+   </mx:Component>
+   <mx:Component id="ImageRenderer">
+        <mx:VBox horizontalAlign="center" verticalAlign="top">
+            <mx:Image source="{data.status}"/>
+        </mx:VBox>
+   </mx:Component>
+   <mx:Component id="ErrorRenderer">
+        <mx:VBox horizontalAlign="center" verticalAlign="middle">
+            <mx:TextArea borderThickness="0" text="{data.errorMessage}" textAlign="left" width="100%" height="100%" editable="false" />
+        </mx:VBox>
+    </mx:Component>
+	<mx:VBox width="100%" height="100%" horizontalAlign="center">
+		<mx:Spacer width="30" />
+		<mx:DataGrid id="resultGrid" width="90%" height="90%" rowCount="10">
+			<mx:columns>
+                <mx:DataGridColumn dataField="id" headerText="Reference ID" textAlign="center" itemRenderer="{IdRenderer}" />
+                <mx:DataGridColumn dataField="valid" headerText="Status" textAlign="center" itemRenderer="{ImageRenderer}" />
+                <mx:DataGridColumn dataField="errorMessage" headerText="Error Message" textAlign="center" itemRenderer="{ErrorRenderer}" />
+            </mx:columns>
+		</mx:DataGrid>
+		<mx:Spacer width="10" />
+	</mx:VBox>
+</mx:TitleWindow>

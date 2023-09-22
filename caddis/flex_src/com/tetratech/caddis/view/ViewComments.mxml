@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow title="Diagram Comments" maxHeight="500" maxWidth="500" height="500" width="500" horizontalScrollPolicy="off"
+            showCloseButton="true" xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+ 	<mx:VBox id="resultsBox" height="100%" paddingTop="10" paddingLeft="10" paddingBottom="10">
+ 		<mx:HBox verticalAlign="middle" paddingBottom="10" width="100%">
+			<mx:Text id="resultsMessage" styleName="messageText"  fontWeight="bold"/>
+			<mx:Spacer width="180" />
+        	<mx:Button label="Submit Comment" id="enterCommentB" />
+        </mx:HBox>
+        <mx:Repeater id="displayComments" >
+        <mx:VBox>
+         <mx:HBox width="440"  maxWidth="440" horizontalAlign="left" horizontalGap="10">
+        	<mx:Text width="120" maxWidth="120" styleName="messageText" color="#0066CC" fontWeight="bold" textAlign="left" htmlText="{displayComments.currentItem.commentor}"/>
+        	<mx:Spacer width="80" />
+        	<mx:Text color="#666666"  fontWeight="bold" htmlText="{displayComments.currentItem.createdDate}"/>
+         </mx:HBox>	 
+         <mx:HBox>
+			 <mx:Text width="440"  maxWidth="440" htmlText="{displayComments.currentItem.commentText}" />
+		 </mx:HBox>
+		</mx:VBox>
+		<mx:HRule width="440" />
+        </mx:Repeater>
+        <!--							
+        <mx:HBox horizontalAlign="center" width="100%">
+        	<mx:Button id="closeb" label="Close"  />
+        </mx:HBox>		-->					
+	</mx:VBox>
+
+</mx:TitleWindow>

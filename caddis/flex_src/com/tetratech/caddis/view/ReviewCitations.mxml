@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow title="Review Citations" maxHeight="500" maxWidth="500" height="480" width="500" horizontalScrollPolicy="off"
+            showCloseButton="true" xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+
+ 	<mx:VBox id="resultsBox" height="100%" paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" width="100%">
+		<mx:Text styleName="messageText" fontWeight="bold"  width="460" maxWidth="460"
+			htmlText="Check citations to approve them. Remember to click Unflag at the bottom of the screen before exiting to save your selections."/>
+		<mx:HRule width="100%" />
+		<mx:Text id="resultsMessage" styleName="messageText" fontWeight="bold"  width="460" maxWidth="460"
+			htmlText=""/>
+        <mx:VBox paddingTop="5" paddingBottom="5" width="100%" >
+	        <mx:Repeater id="displayCitations" >
+	        
+	        <mx:HBox horizontalAlign="left" horizontalGap="10">
+        	<mx:CheckBox id="citationCB" 
+        		data="{displayCitations.currentItem.id}">       		
+        	</mx:CheckBox>
+        	<mx:Text width="400" maxWidth="400" htmlText="{displayCitations.currentItem.displayTitle}"/>
+         </mx:HBox>	 
+		<mx:HBox>
+			 <mx:LinkBar styleName="linkbar" id="linkbar"  />
+			 <mx:Spacer width="5" />
+			 <mx:Text id="inCadlit" color="#666666" fontWeight="bold" />
+		 </mx:HBox>
+
+				<mx:HRule width="100%" />
+	        </mx:Repeater>
+        </mx:VBox>					
+        		
+        <mx:HBox horizontalAlign="center" width="100%">
+        	<mx:Button id="saveb" label="Unflag" />
+        	<mx:Button id="closeb" label="Close"  />
+        </mx:HBox>	
+        						
+	</mx:VBox>
+
+</mx:TitleWindow>

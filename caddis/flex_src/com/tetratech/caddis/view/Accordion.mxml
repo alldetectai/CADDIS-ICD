@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas  xmlns:mx="http://www.adobe.com/2006/mxml" horizontalScrollPolicy="off" verticalScrollPolicy="off" 
+width="{Constants.ACCORDION_WIDTH}" height="{Constants.ACCORDION_HEIGHT}" xmlns:view="com.tetratech.caddis.view.*">
+<mx:WipeDown id="wd" duration="500" />
+<mx:WipeUp id="wu" duration="500" /> 
+<mx:VBox width="100%" height="100%" verticalGap="0" creationComplete="init()">
+<mx:VBox id="tab1" width="100%"  verticalGap="0" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+	<mx:HBox id="tab1bar" styleName="pinkBackground"  width="100%" height="20" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+		<mx:Label text="Selected Shapes" styleName="boldLabel" width="120" />
+		<mx:Spacer width="80" />
+		<mx:Image id="btn1" buttonMode="true" />
+	</mx:HBox>
+	<mx:VBox id="tab1con" styleName="lightPinkBackground" width="100%" height="230"
+		horizontalScrollBarStyleName="accordionScrollBar" 
+		verticalScrollBarStyleName="accordionScrollBar">
+	    <mx:List id="selectedShapes" 
+	    itemRenderer="com.tetratech.caddis.view.AccordionSymbolListItemRenderer"
+	    styleName="lightPinkBackground" width="100%" height="100%"  
+	    wordWrap="true" verticalScrollPolicy="auto" verticalScrollBarStyleName="accordionScrollBar" 
+	    horizontalScrollBarStyleName="accordionScrollBar"  horizontalScrollPolicy="off" />
+	</mx:VBox>
+</mx:VBox>
+<mx:VBox id="tab2" width="100%" verticalGap="0" horizontalScrollPolicy="off" verticalScrollPolicy="off" >
+	<mx:HBox id="tab2bar" styleName="pinkBackground" width="100%" height="20" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+		<mx:Label text="Selected Linkages" styleName="boldLabel" width="120"/>
+		<mx:Spacer width="80" />
+		<mx:Image id="btn2" buttonMode="true" />
+	</mx:HBox>
+	<mx:VBox id="tab2con" styleName="lightPinkBackground" width="100%" height="230" 
+		verticalGap="0" paddingBottom="10" 
+		horizontalScrollBarStyleName="accordionScrollBar" 
+		verticalScrollBarStyleName="accordionScrollBar">
+		<!--
+		<mx:Image id="organismTogglerIcon" x="0" y="-1" buttonMode="true" />
+		<view:OrganismFilter id="organismFilter" x="0" y="-1" width="100%" height="0" visible="false" 
+			 showEffect="{wd}" hideEffect="{wu}" />
+   		-->
+   		<mx:Repeater id="selectedLinkages">
+        	<!-- <mx:Text width="{Constants.ACCORDION_WIDTH - 30}" maxWidth="{Constants.ACCORDION_WIDTH - 30}" 
+        		text="{selectedLinkages.currentItem.shape1.label} AND {selectedLinkages.currentItem.shape2.label}"/> -->
+        	<mx:HBox maxWidth="{Constants.ACCORDION_WIDTH - 30}" horizontalGap="0" horizontalScrollPolicy="off">
+        		<view:SymbolLabel text="{selectedLinkages.currentItem.shape1.label}" textLength="80" symbolType="{selectedLinkages.currentItem.shape1.labelSymbolType}"  />
+        		<mx:Text text="AND" />
+        		<view:SymbolLabel text="{selectedLinkages.currentItem.shape2.label}" textLength="80" symbolType="{selectedLinkages.currentItem.shape2.labelSymbolType}"  />
+        	</mx:HBox>	
+	     	<mx:Repeater id="displayCitations" dataProvider="{selectedLinkages.currentItem.citations}" >
+	         <mx:HBox horizontalAlign="left" width="{Constants.ACCORDION_WIDTH - 30}" maxWidth="{Constants.ACCORDION_WIDTH - 30}"
+			    	horizontalScrollPolicy="off" verticalScrollPolicy="off">
+	        	<mx:Spacer width="5" />
+	        	<mx:CheckBox id="citationCB"
+	        		data="{displayCitations.currentItem.id}" visible="{displayCitations.currentItem.id != 0}">       		
+	        	</mx:CheckBox>
+	        	<mx:Text width="{Constants.ACCORDION_WIDTH - 60}" maxWidth="{Constants.ACCORDION_WIDTH - 60}" 
+	        		htmlText="{displayCitations.currentItem.displayTitle}"/>
+	         </mx:HBox>	 
+	         <mx:HBox verticalAlign="center" >
+				 <mx:LinkBar horizontalAlign="center" id="linkbar" separatorWidth="0" color="#0000FF" fontWeight="bold" /> 
+				 <mx:Spacer width="5" />
+				 <mx:Text id="inCadlit" color="#666666" fontWeight="bold"/>
+			 </mx:HBox>
+	        </mx:Repeater>
+	        
+		    <mx:HRule width="100%" />
+        </mx:Repeater>
+ 
+        <mx:HBox id="selectedLinkagesHB" horizontalAlign="center" horizontalGap="2" paddingTop="5" visible="false"
+        	width="{Constants.ACCORDION_WIDTH - 30}" maxWidth="{Constants.ACCORDION_WIDTH - 30}">
+            <mx:Button id="selectAllCitationsb" click="handleSelectAllCitations(event)" label="Select All" />
+            <mx:Button id="clearAllCitaionsb" click="handleClearAllCitations(event)" label="Deselect All" />
+        	<mx:Button id="saveCitaionsb" click="handleSaveSelectedLinkages(event)" label="Save" />
+        </mx:HBox>	
+      </mx:VBox>
+</mx:VBox>
+<mx:VBox id="tab3" width="100%" verticalGap="0"  horizontalScrollPolicy="off" verticalScrollPolicy="off">
+	<mx:HBox id="tab3bar"  styleName="pinkBackground"  width="100%" height="20"  horizontalScrollPolicy="off" verticalScrollPolicy="off">
+		<mx:Label text="Saved References" styleName="boldLabel" width="120" />
+		<mx:Spacer width="80" />
+		<mx:Image id="btn3" buttonMode="true"  />
+	</mx:HBox>
+	<mx:VBox id="tab3con" styleName="lightPinkBackground" width="100%" height="226" 
+		verticalGap="0" paddingBottom="10" 
+		horizontalScrollBarStyleName="accordionScrollBar" 
+		verticalScrollBarStyleName="accordionScrollBar">
+
+		<mx:Repeater id="savedLinkages">
+        	<!--
+        	<mx:Text width="{Constants.ACCORDION_WIDTH - 30}" maxWidth="{Constants.ACCORDION_WIDTH - 30}" 
+        		text="{savedLinkages.currentItem.shape1.label} AND {savedLinkages.currentItem.shape2.label}"/>
+			-->
+			
+			<mx:HBox maxWidth="{Constants.ACCORDION_WIDTH - 30}" horizontalGap="0" horizontalScrollPolicy="off">
+        		<view:SymbolLabel text="{savedLinkages.currentItem.shape1.label}" textLength="80"  symbolType="{savedLinkages.currentItem.shape1.labelSymbolType}"  />
+        		<mx:Text text="AND" />
+        		<view:SymbolLabel text="{savedLinkages.currentItem.shape2.label}"  textLength="80" symbolType="{savedLinkages.currentItem.shape2.labelSymbolType}"  />
+        	</mx:HBox>	
+        		
+	     	<mx:Repeater id="savedCitations" dataProvider="{savedLinkages.currentItem.citations}" >
+	         <mx:HBox horizontalAlign="left" width="{Constants.ACCORDION_WIDTH - 30}" maxWidth="{Constants.ACCORDION_WIDTH - 30}"
+			    	horizontalScrollPolicy="off" verticalScrollPolicy="off">
+	        	<mx:Spacer width="5" />
+	        	<mx:CheckBox id="savedCitationCB" 
+	        		data="{savedCitations.currentItem.id}" selected="true" visible="{savedCitations.currentItem.id != 0}">       		
+	        	</mx:CheckBox>
+	        	<mx:Text width="{Constants.ACCORDION_WIDTH - 60}" maxWidth="{Constants.ACCORDION_WIDTH - 60}" 
+	        		htmlText="{savedCitations.currentItem.displayTitle}"/>
+	         </mx:HBox>	 
+			 <mx:LinkBar id="linkbar2" color="#0000FF" fontWeight="bold" /> 
+	        </mx:Repeater>
+  	
+		    <mx:HRule width="100%" />
+        </mx:Repeater>					
+		       
+        <mx:HBox id="savedLinkagesHB" horizontalAlign="center" horizontalGap="2" paddingTop="5" visible="false"
+        	width="{Constants.ACCORDION_WIDTH - 20}" maxWidth="{Constants.ACCORDION_WIDTH - 20}">
+				<mx:Button id="selectAll" click="handleSelectAllSavedCitations(event)" label="Select All" />
+				<mx:Button id="removeSelectedb" click="handleRemoveSavedLinkages(event)" label="Remove Selected" />
+        		<mx:Button id="downloadb" click="handleDownloadLinkages(event)" label="Download" />
+        </mx:HBox>	
+	</mx:VBox>
+</mx:VBox>
+</mx:VBox>
+<mx:Script source="../helper/AccordionHelper.as" />
+<mx:Script source="../helper/ViewSelectionHelper.as" />
+<mx:Script source="../helper/CitationPopUpHelper.as" />
+	<mx:Script source="../helper/ViewDiagramEvidenceHelper.as">
+		
+		
+	</mx:Script>
+</mx:Canvas>
+
+

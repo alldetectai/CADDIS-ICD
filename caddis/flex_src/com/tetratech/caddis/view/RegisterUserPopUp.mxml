@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow title="Register" xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="500" height="400"  showCloseButton="true" >
+
+
+<mx:Text paddingTop="10" paddingLeft="10" fontWeight="bold" 
+	styleName="messageText" 
+	text="Register to create your diagrams."/>
+	
+	<mx:Form>
+		<mx:FormItem>
+			<mx:Text id="error" paddingTop="10" 
+				text="Please correct error(s) indicated below." 
+				styleName="errorText" fontWeight="bold" visible="false"/>
+		</mx:FormItem>
+		<mx:FormItem label="First Name" required="true">
+			<mx:TextInput id="fname" maxChars="100" width="300"></mx:TextInput>
+		</mx:FormItem>
+		
+		<mx:FormItem label="Middle Name" >
+			<mx:TextInput id="mname" maxChars="50" width="100"></mx:TextInput>
+		</mx:FormItem>
+		
+		<mx:FormItem label="Last Name" required="true">
+			<mx:TextInput id="lname" maxChars="100" width="300"></mx:TextInput>
+		</mx:FormItem>
+
+		<mx:FormItem label="User Name" required="true" >
+			<mx:TextInput id="uname" width="100"></mx:TextInput>
+		</mx:FormItem>
+		
+		<mx:FormItem label="Password" required="true">
+			<mx:TextInput displayAsPassword="true" maxChars="50" id="password" width="100"></mx:TextInput>
+		</mx:FormItem>
+		
+		<mx:FormItem label="Confirm Password" required="true">
+			<mx:TextInput displayAsPassword="true" maxChars="50" id="confirmPassword" width="100"></mx:TextInput>
+		</mx:FormItem>
+		
+		<mx:FormItem label="Email" required="true">
+			<mx:TextInput id="email" maxChars="250" width="300" ></mx:TextInput>
+		</mx:FormItem>
+
+		<mx:FormItem>
+			<mx:HBox horizontalAlign="center">
+				<mx:Button label="Save" id="saveb">
+				</mx:Button>
+				<mx:Button label="Cancel" id="cancelb">
+				</mx:Button>
+			</mx:HBox>
+		</mx:FormItem>
+	</mx:Form>
+	<mx:StringValidator id="valFName" source="{fname}" property="text" required="true" minLength="1" maxLength="100"/>
+	<mx:StringValidator id="valMName" source="{mname}" property="text" required="false" minLength="0" maxLength="50"/>
+	<mx:StringValidator id="valLName" source="{lname}" property="text" required="true" minLength="1" maxLength="100"/>
+	<mx:StringValidator id="valUName" source="{uname}" property="text" required="true" minLength="1" maxLength="50"/>
+	<mx:StringValidator id="valPassword" source="{password}" property="text" required="true" minLength="1" maxLength="50"/>
+	<mx:StringValidator id="valConfirmPassword" source="{confirmPassword}" property="text" required="true" minLength="1" maxLength="50"/>
+	<mx:EmailValidator id="valEmail" source="{email}" property="text" required="true" />
+</mx:TitleWindow>

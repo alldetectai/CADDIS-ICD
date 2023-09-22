@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" styleName="diagramFilterBackground" width="400" height="100%"
+	verticalScrollBarStyleName="diagramFilterScrollBar" horizontalScrollPolicy="off">
+<mx:VBox height="100%" width="100%" left="10" top="10" right="0" bottom="10" verticalGap="10">
+
+	<mx:HBox horizontalAlign="left" horizontalGap="10">
+			<mx:Image width="40" maxWidth="40"  source="{Constants.humanAct}" />
+         	<mx:Text width="300" maxWidth="300" text="Human Activity - Activity or land use that directly or indirectly leads to one or more sources"/>
+	</mx:HBox>
+	
+	<mx:HBox horizontalAlign="left" horizontalGap="10">
+			<mx:Image width="40" maxWidth="40" source="{Constants.source}" />
+         	<mx:Text width="300" maxWidth="100"  text="Source - Entity or activity that directly or indirectly leads to proximate stressors"/>
+	</mx:HBox>
+	
+	<mx:HBox horizontalAlign="left" horizontalGap="10">
+			<mx:Image width="40" maxWidth="40"  source="{Constants.stressor}" />
+         	<mx:Text width="300" maxWidth="100"  text="Stressor - Physical, chemical, or biological entity that directly induces a biotic response concern"/>
+	</mx:HBox>
+	
+	<mx:HBox horizontalAlign="left" horizontalGap="10">
+			<mx:Image width="40" maxWidth="40"  source="{Constants.resp}" />
+         	<mx:Text width="300" maxWidth="100" text="Response - Biological result of exposure to a proximate stressor"/>
+	</mx:HBox>
+	
+	<mx:HBox horizontalAlign="left" horizontalGap="10">
+			<mx:Image width="40" maxWidth="40"  source="{Constants.modFac}" />
+         	<mx:Text width="300" maxWidth="100" text="Modifying Factor - Process or state that modifies delivery or expression of a stressor"/>
+	</mx:HBox>
+	
+	<mx:HBox horizontalAlign="left" horizontalGap="10">
+			<mx:Image width="40" maxWidth="40"  source="{Constants.modeAct}" />
+         	<mx:Text width="300" maxWidth="100" text="Mode of Action - Process or state that causally connects a proximate stressor to a biotic response"/>
+	</mx:HBox>
+		
+	<mx:HBox horizontalAlign="left" horizontalGap="10">
+			<mx:Image width="40" maxWidth="40"  source="{Constants.addStep}" />
+         	<mx:Text width="300" maxWidth="100" text="Additional Steps - Process or state that causally connects a source to a proximate stressor"/>
+	</mx:HBox>
+	
+	<mx:HBox horizontalAlign="left" horizontalGap="0">
+			<mx:Image width="16" maxWidth="16"  source="{Constants.SYMBOL_IMAGE_INCREASING}" />
+			<mx:Text width="100" maxWidth="100" text="(inside shape)"/>
+         	<mx:Text width="200" maxWidth="200"  text="Increasing"/>
+	</mx:HBox>
+	
+	<mx:HBox horizontalAlign="left" horizontalGap="0">
+			<mx:Image width="16" maxWidth="16"  source="{Constants.SYMBOL_IMAGE_DECREASING}" />
+			<mx:Text width="100" maxWidth="100" text="(inside shape)"/>
+         	<mx:Text width="200" maxWidth="200" text="Decreasing"/>
+	</mx:HBox>
+	
+	<mx:HBox horizontalAlign="left" horizontalGap="0">
+			<mx:Image width="16" maxWidth="16"  source="{Constants.SYMBOL_IMAGE_CHANGE}" />
+			<mx:Text width="100" maxWidth="100" text="(inside shape)"/>
+         	<mx:Text width="200" maxWidth="200" text="Change in"/>
+	</mx:HBox>
+
+</mx:VBox>
+<mx:Script source="../helper/CommonHelper.as" />
+</mx:Canvas>

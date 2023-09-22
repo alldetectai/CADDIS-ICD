@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" styleName="menuBarBackground" width="100%" height="100%" borderStyle="none" initialize="init()"  creationComplete="initCollections();" >
+	<mx:Script>
+		<![CDATA[
+			
+			import mx.events.MenuEvent;
+			import mx.controls.Alert;
+			import mx.collections.*;
+			import com.tetratech.caddis.common.Constants;
+			
+			[Bindable]
+			public var menuBarCollection:XMLListCollection;
+			public var menuShapeCollection:XMLListCollection;
+			public var menuLineCollection:XMLListCollection;
+			
+			private var menubarXML:XMLList =
+				<>
+					<menuitem label="Diagram" data="diagramAction">
+						<menuitem label="Open" data="open"/>
+						<menuitem label="Save" data="save"/>
+						<menuitem label="Save As..." data="saveas"/>
+						<menuitem label="Save as Image" data="printAsImage"/>
+						<menuitem label="Close" data="close"/>
+		
+					</menuitem>
+				</>;
+			
+			[Embed(source="../../../../../images/additional_step.png")]
+			public const addStep:Class;
+			
+			[Embed(source="../../../../../images/human_activity.png")]
+			public const humanAct:Class;
+			
+			[Embed(source="../../../../../images/mode_action.png")]
+			public const modeAct:Class;
+			
+			[Embed(source="../../../../../images/modify_factor.png")]
+			public const modFac:Class;
+			
+			[Embed(source="../../../../../images/response.png")]
+			public const resp:Class;
+			
+			[Embed(source="../../../../../images/source.png")]
+			public const source:Class;
+			
+			[Embed(source="../../../../../images/stressor.png")]
+			public const stressor:Class;
+			
+			[Embed(source="../../../../../images/line.png")]
+			public const line:Class;
+			
+			[Embed(source="../../../../../images/arrow_line.png")]
+			public const arrowline:Class;
+			
+			private var menuShapeXML:XMLList =
+				<>
+					<menuitem label="Shape Icons" >
+						<menuitem label="Human Activity" icon="humanAct" data="humanAct"/>
+						<menuitem label="Source" icon="source" data="source"/>
+						<menuitem label="Stressor" icon="stressor" data="stressor"/>
+						<menuitem label="Response" icon="resp" data="bioresp"/>
+						<menuitem label="Modifying Factor" icon="modFac" data="modfactor"/>
+						<menuitem label="Mode of Action" icon="modeAct" data="modeaction"/>
+						<menuitem label="Additional Steps" icon="addStep" data="addstep"/>
+					</menuitem>
+				</>;
+			
+			private var menuLineXML:XMLList =
+				<>
+					<menuitem label="Arrow/Line Icons" >
+						<menuitem label="Line" icon="line" data="line"/>
+						<menuitem label="Arrow Line" icon="arrowline" data="aline"/>
+					</menuitem>
+				</>;
+			// Event handler to initialize the MenuBar control.
+			private function initCollections():void {
+				menuBarCollection = new XMLListCollection(menubarXML);
+				menuShapeCollection = new XMLListCollection(menuShapeXML);
+				menuLineCollection= new XMLListCollection(menuLineXML);
+			}
+
+		]]>
+	</mx:Script>
+
+<mx:ViewStack id="stack" width="100%" height="100">	
+	
+	<mx:Canvas id="homeMode" width="100%" height="100%" >
+		<mx:HBox label="Homes" width="100%" height="100%" paddingBottom="3" paddingTop="3" horizontalGap="5" verticalAlign="center" >
+		<!--	<mx:Spacer width="85%" />
+			<mx:Box styleName="menuLabelWrapper">
+				<mx:Label id="loginb" text="Log In" color="white"
+						  toolTip="Log in using your EPA LAN or EPA Portal username and password, after obtaining CADDIS community access." />
+			</mx:Box>
+			<mx:Box styleName="menuLabelWrapper">
+				<mx:Label id="register" text="Register" color="white" 
+						  toolTip="Register and request access to the CADDIS community using the EPA Portal"
+						  click="navigateToURL(new URLRequest('http://portal.epa.gov'))"/>
+			</mx:Box>-->
+	</mx:HBox>		
+	</mx:Canvas> 
+	<mx:Canvas id="editMode" width="100%" height="100%">
+		<mx:HBox label="Edit" width="100%" height="100%" paddingBottom="3" paddingTop="3" horizontalGap="5" verticalAlign="center"  initialize="initEditHandlers()">
+			<mx:Spacer width="3" />
+		
+			<mx:MenuBar styleName="menuWrapper" labelField="@label" itemClick="diagramMenuHandler(event);" 
+						dataProvider="{menuBarCollection}" />
+			<mx:Spacer width="10" />
+			<mx:Box styleName="menuLabelWrapper">
+				<mx:Label id="selectedTerm" text="Term Pick-List" toolTip="Access pick-list" color="white" textAlign="center" />
+			</mx:Box>
+			<mx:Spacer width="10" />
+			<mx:Box styleName="menuLabelWrapper">
+				<mx:Label id="legendEdit" text="Legend" color="white"/>
+			</mx:Box>
+			<mx:MenuBar styleName="menuWrapper" labelField="@label" iconField="@icon" itemClick="diagramShapeMenuHandler(event);" 
+						dataProvider="{menuShapeCollection}" />
+
+			<mx:MenuBar styleName="menuWrapper" labelField="@label" iconField="@icon" itemClick="diagramShapeMenuHandler(event);" 
+						dataProvider="{menuLineCollection}" />
+				<!-- 
+			<mx:Image id="humact" source="{Constants.humanAct}" toolTip="Human Activity" buttonMode="true"/>
+		<mx:Spacer width="1" />
+			<mx:Image id="source" source="{Constants.source}" toolTip="Source" buttonMode="true"/>
+			
+			<mx:Image id="stressor" source="{Constants.stressor}" toolTip="Stressor" buttonMode="true" />
+			
+			<mx:Image id="bioresp" source="{Constants.resp}" toolTip="Response" buttonMode="true"/>
+		
+			<mx:Image id="modfactor" source="{Constants.modFac}" toolTip="Modifying Factor" buttonMode="true" />
+	
+			<mx:Image id="modeaction" source="{Constants.modeAct}" toolTip="Mode of Action" buttonMode="true" />
+		
+			<mx:Image id="addstep" source="{Constants.addStep}" toolTip="Additional Steps" buttonMode="true" />				
+			
+			<mx:Image id="aline" source="{Constants.arrowline}" toolTip="Arrow Line" buttonMode="true" />		
+			<mx:Image id="line" source="{Constants.line}" toolTip="Line" buttonMode="true" />		
+			 -->
+			
+			
+			<!--
+			<mx:Box styleName="menuLabelWrapper">
+				<mx:Label id="hlines" text="Hide" toolTip="Hide Lines" color="white" textAlign="center"/>		
+			</mx:Box>
+			-->
+			<mx:Box styleName="menuLabelWrapper">
+				<mx:Label id="select" text="Select" toolTip="Select Shapes" color="white" textAlign="center" />
+			</mx:Box>
+			<mx:Box styleName="menuLabelWrapper">
+				<mx:Label id="clone" text="Copy" toolTip="Copy Shape" color="white" textAlign="center" />
+			</mx:Box>
+			<mx:Box styleName="menuLabelWrapper">
+				<mx:Label id="align" text="Align" toolTip="Align Shapes" color="white" textAlign="center" />
+			</mx:Box>
+			<!--Li <mx:Box styleName="menuLabelWrapper">
+				<mx:Label id="addlinkage" text="Add" toolTip="Add Linkage" color="white" textAlign="center" />
+			</mx:Box>
+			<mx:Box styleName="menuLabelWrapper">
+				<mx:Label id="reviewlinkage" text="Review" toolTip="Review Linkage" color="white" textAlign="center" />
+			</mx:Box>-->
+			<mx:Spacer width="20" />
+		
+			<mx:Image id="editIcon" source="{Constants.editIcon}" buttonMode="true" toolTip="Manage Diagram Settings" />
+			<mx:Spacer width="95%" />
+			<mx:Image id="viewComments" source="{Constants.comment}" buttonMode="true" toolTip="Enter/View Internal Comments" />
+			<mx:Spacer width="5" />
+			
+		</mx:HBox>
+	</mx:Canvas>
+	  <mx:Canvas id="viewMode" width="100%" height="100%">
+			<mx:HBox label="View" width="100%" height="100%" paddingBottom="3" paddingTop="3" horizontalGap="5" verticalAlign="center" initialize="initViewHandlers()">
+				<mx:Spacer width="1" />
+				<mx:Image id="inset" source="{Constants.inset}" buttonMode="true" toolTip="Inset: click to view (or toggle Esc); use blue window to navigate" />
+				<mx:Spacer width="5" />
+				<mx:Box styleName="menuLabelWrapper">
+				<!--	<mx:Label id="load" text="Open Diagram" color="white" /> -->
+					<mx:MenuBar styleName="menuWrapper" labelField="@label" itemClick="viewDiagramMenuHandler(event);" 
+								dataProvider="{menuBarCollection}" />
+				</mx:Box>
+				
+				<mx:Spacer width="5" />
+				<mx:Box styleName="menuLabelWrapper">
+					<mx:Label id="legend" text="Legend" color="white"/>
+				</mx:Box>
+
+				<mx:Spacer width="5" />
+				<mx:Box styleName="menuLabelWrapper">
+					<mx:Label id="resetb" text="Deselect All" color="white"/>
+				</mx:Box>
+				<mx:Spacer width="5" /><mx:Spacer width="360" />
+				<!--<mx:Box styleName="menuLabelWrapper">
+					<mx:Label id="download" text="Save as Image" color="white"/>
+				</mx:Box>
+				
+				<mx:Box styleName="menuLabelWrapper">
+					<mx:Label id="loginb" text="Log In" color="white"
+						toolTip="Log in using your EPA LAN or EPA Portal username and password, after obtaining CADDIS community access." />
+				</mx:Box>
+				<mx:Box styleName="menuLabelWrapper">
+					<mx:Label id="register" text="Register" color="white" 
+						toolTip="Register and request access to the CADDIS community using the EPA Portal"
+						click="navigateToURL(new URLRequest('http://portal.epa.gov'))"/>
+				</mx:Box>-->
+				<mx:Spacer width="90%" />
+				<mx:Box styleName="menuLabelWrapper">
+					<mx:Label id="reviewLink" text="View Evidence" color="white"/>
+				</mx:Box>
+				<mx:Spacer width="5" />
+				<mx:Image id="vinfo" source="{Constants.help}" buttonMode="true" toolTip="Help" />
+				<mx:Spacer width="5" />
+				<mx:Image id="searchrefs" source="{Constants.search}" buttonMode="true" toolTip="Search References" />
+				<mx:Spacer width="5" />
+				<mx:Image id="accordion" source="{Constants.refs}" buttonMode="true" toolTip="References Panel"/>
+			</mx:HBox>
+		</mx:Canvas>
+	  
+	  <mx:Canvas id="linkMode" width="100%" height="100%">
+			<mx:HBox label="Link page" width="95%" height="100%" paddingBottom="3" paddingTop="3" horizontalGap="5" verticalAlign="center" initialize="initLinkHandlers()">
+				<mx:Spacer width="5" />
+			<!--	<mx:Box styleName="menuLabelWrapper">
+					<mx:Label id="openLink" text="Open Diagram" color="white" />
+				</mx:Box>
+				<mx:Box styleName="menuLabelWrapper">
+					<mx:Label id="closeLink" text="Close" color="white"/>	
+				</mx:Box>	-->
+				<mx:MenuBar styleName="menuWrapper" labelField="@label" itemClick="linkDiagramMenuHandler(event);" 
+							dataProvider="{menuBarCollection}" />
+				<mx:Spacer width="5" />
+				<mx:Box styleName="menuLabelWrapper">
+					<mx:Label id="legendLink" text="Legend" color="white"/>
+				</mx:Box>
+				
+				<mx:Spacer width="150" />
+				<mx:Box styleName="menuLabelWrapper">
+					<mx:Label id="addLink" text="Add/Edit Evidence" color="white"/>
+				</mx:Box>
+				<!--<mx:Spacer width="50" />
+				<mx:Box styleName="menuLabelWrapper">
+					<mx:Label id="reviewLink" text="View Evidence" color="white"/>
+				</mx:Box> -->
+				<mx:Spacer width="95%" />
+				<mx:Image id="viewCommentsLink" source="{Constants.comment}" buttonMode="true" toolTip="Enter/View Internal Comments" />
+				<mx:Spacer width="5" />
+			</mx:HBox>	
+		</mx:Canvas>
+	  <mx:Canvas id="searchMode" width="100%" height="100%">
+			<mx:HBox label="serach page" width="100%" height="100%" paddingBottom="3" paddingTop="3" horizontalGap="5" verticalAlign="center" >
+			</mx:HBox>	
+		</mx:Canvas>
+</mx:ViewStack>	
+<mx:Script source="../helper/MenuHelper.as" />
+<mx:Script source="../helper/CitationHelper.as" />
+<mx:Script source="../helper/CitationPopUpHelper.as" />
+<mx:Script source="../helper/CommentPopUpHelper.as" />
+<mx:Script source="../helper/ViewCommentsHelper.as"/>
+<mx:Script source="../helper/RegisterUserPopUpHelper.as"/>
+<mx:Script source="../helper/AdminPopUpHelper.as"/>
+<mx:Script source="../helper/ReviewCitationsHelper.as" />
+	<!--<mx:Script source="../helper/LoginHelper.as" /> 	-->
+<mx:Script source="../helper/RenameDiagramHelper.as" /> 	
+<mx:Script source="../helper/ReviewDiagramHistoryHelper.as" />
+</mx:Canvas>
+

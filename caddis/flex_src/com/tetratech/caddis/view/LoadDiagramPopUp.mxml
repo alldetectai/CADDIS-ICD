@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow title="Open Diagram" xmlns:mx="http://www.adobe.com/2006/mxml" showCloseButton="true" layout="absolute" width="500" height="400">
+<mx:Form>
+	<mx:FormItem textAlign="right" label="Diagram">
+		<mx:ComboBox textAlign="left" id="diagrams" width="300" >
+		</mx:ComboBox>
+	</mx:FormItem>
+	<mx:FormItem>
+		<mx:Spacer width="100%" height="15" />
+	</mx:FormItem>
+	<mx:FormItem label="Keywords"  textAlign="right">
+		<mx:Text id="dkeywords" width="300" textAlign="left" 
+			truncateToFit="true"/>
+	</mx:FormItem>
+	<mx:FormItem label="Site Location"  textAlign="right">
+		<mx:Text id="dloc" width="300" textAlign="left" 
+			truncateToFit="true"/>
+	</mx:FormItem>
+	<mx:FormItem textAlign="right" label="Description" >
+		<mx:Text id="desc" textAlign="left" height="100"  
+			 width="300" truncateToFit="true" />
+	</mx:FormItem>
+	<mx:FormItem>
+		<mx:Spacer width="100%" height="15" />
+	</mx:FormItem>
+	<mx:FormItem>
+		<mx:HBox horizontalAlign="center">
+			<mx:Button label="Open" id="loadb">
+			</mx:Button>
+			<mx:Button label="Cancel" id="cancelb">
+			</mx:Button>
+		</mx:HBox>
+	</mx:FormItem>
+</mx:Form>
+</mx:TitleWindow>

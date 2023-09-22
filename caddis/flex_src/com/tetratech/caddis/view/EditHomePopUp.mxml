@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow title="Open Existing Diagram" xmlns:mx="http://www.adobe.com/2006/mxml" 
+	showCloseButton="true" layout="absolute" width="880" height="600" >
+
+<mx:VBox paddingRight="0" paddingLeft="0">
+
+	<mx:HBox paddingTop="10" paddingLeft="20" horizontalScrollPolicy="off" paddingRight="10" width="100%" verticalScrollPolicy="off">
+		<mx:VBox height="230" width="90%" horizontalScrollPolicy="off" verticalScrollPolicy="auto">
+				<!--<mx:HBox>
+					<mx:Button label="Create New Diagram" id="newb"  />
+					<mx:Spacer width="355"/>
+					<mx:Image id="hinfo" source="{Constants.help}" toolTip="Link to help" />
+				</mx:HBox>-->
+			 	<mx:Text styleName="messageText"  fontWeight="bold" text="Search Existing Diagrams:" />
+			 	<mx:HBox width="100%">
+				 	<mx:VBox>
+						<mx:HBox>
+							<mx:Spacer width="10"/>
+							<mx:Text width="80" styleName="messageText"  fontWeight="bold" text="Search: " />
+							<mx:TextInput id="filterd" width="300" />
+							<mx:Spacer width="10"/>
+						<!--	<mx:Button label="Search" id="searchb"  /> -->
+						</mx:HBox>
+				 		<mx:HBox width="100%">
+				 		<mx:Spacer width="10"/>
+				 		<mx:Text width="80" styleName="messageText"  fontWeight="bold" text="Browse by:" />
+
+						<mx:RadioButtonGroup id="sort" />
+						<mx:RadioButton id="sname" value="{Constants.DIAGRAM_NAME}" label="Name" selected="true" groupName="sort" />
+						<mx:RadioButton id="screator" value="{Constants.DIAGRAM_CREATOR}" label="Creator" groupName="sort" />
+						<mx:RadioButton id="sdate" value="{Constants.DIAGRAM_CREATED_DATE}" label="Date" groupName="sort" />
+						</mx:HBox>
+						
+				 	</mx:VBox>
+				</mx:HBox>
+				<mx:HBox width="100%">
+					<mx:Spacer width="10"/>
+					<mx:Text width="80" styleName="messageText"  fontWeight="bold" text="Diagram List" />
+					<mx:List textAlign="left" id="diagrams"  width="300" height="120" >
+					</mx:List><mx:Spacer width="20"/>
+					<mx:VBox>
+						<mx:Button label="Open Diagram" toolTip="Open Diagram" id="loadb"/> 
+					</mx:VBox>
+					<!--<mx:Image buttonMode="true" verticalAlign="middle" source="{Constants.openDiagramIcon}" toolTip="Open Diagram" id="loadb">
+					</mx:Image>
+					<mx:Image buttonMode="true" verticalAlign="middle" source="{Constants.diagramHistoryIcon}" toolTip="View Diagram History" id="reviewb">
+					</mx:Image>
+					<mx:Image buttonMode="true" verticalAlign="middle" source="{Constants.saveIcon}" toolTip="Save Diagram Settings" id="saveb">
+					</mx:Image>
+					<mx:Image buttonMode="true" verticalAlign="middle" source="{Constants.deleteIcon}" toolTip="Delete Diagram" id="deleteb">
+					</mx:Image>	-->
+
+
+				</mx:HBox>
+		<!--		<mx:VBox width="100%" paddingLeft="15" paddingTop="10">
+
+					<mx:HBox width="100%" horizontalScrollPolicy="off">
+						<mx:Text styleName="messageText"  fontWeight="bold" text="View settings:"/>
+						<mx:CheckBox id="publishCB" label="Public"/>
+						<mx:CheckBox id="publicCB" label="Registered"/> 
+						<mx:CheckBox id="lockCB" label="Check out diagram" />
+					</mx:HBox>
+				</mx:VBox>-->
+				
+				
+
+        	</mx:VBox>
+   
+   
+	</mx:HBox>
+	<mx:HRule width="100%" />
+	<mx:HBox>
+		<mx:VBox width="100%" id="rename" paddingLeft="15" paddingTop="10" enabled="false">
+					<mx:HBox width="100%" horizontalScrollPolicy="off">
+						<mx:Text styleName="messageText"  fontWeight="bold" text="Diagram Settings"/>
+					</mx:HBox>
+	
+		         	<mx:Form  paddingTop="0">
+						<mx:FormItem label="Name" required="true">
+							<mx:HBox>
+								<mx:TextInput id="dname" maxChars="40" width="300" />
+								<mx:Image source="{Constants.help}" toolTip="Diagram name.  Use something brief, that helps you and your collaborators identify the diagram." />
+							</mx:HBox>
+							
+						</mx:FormItem>
+						<mx:FormItem label="Access" required="true">
+							<mx:HBox>
+								<mx:CheckBox id="publishCB" label="Public"/>
+								<mx:CheckBox id="publicCB" label="Registered"/> 
+								<mx:CheckBox id="lockCB" label="Check out diagram" />
+							</mx:HBox>
+							
+						</mx:FormItem>
+						<mx:FormItem label="Keywords" required="true">
+							<mx:HBox>
+								<mx:TextInput id="dkeywords" maxChars="250" width="300" />
+								<mx:Image source="{Constants.help}" toolTip="Diagram keywords (e.g., key sources, stressors, responses, or any other information), separated by commas." />
+							</mx:HBox>
+							
+						</mx:FormItem>
+						<mx:FormItem label="Location" required="true">
+							<mx:HBox>
+								<mx:TextInput id="dloc" maxChars="250" width="300" />
+								<mx:Image source="{Constants.help}" toolTip="Location to which diagram pertains (e.g., 3rd-order stream in Ohio, US streams, Long Creek Maine)." />
+							</mx:HBox>
+						</mx:FormItem>
+						<mx:FormItem label="Description" required="false">
+							<mx:HBox>
+								<mx:TextArea id="ddesc"  height="75" width="300"  />
+								<mx:Image source="{Constants.help}" toolTip="Brief narrative description of diagram." />
+							</mx:HBox>
+						</mx:FormItem>
+					</mx:Form>	
+	        	</mx:VBox>
+		 <mx:HBox id="userContainer" enabled="false" paddingTop="10" paddingLeft="10" paddingRight="0" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+        	<mx:VBox height="200" verticalScrollPolicy="auto" horizontalScrollPolicy="off">
+	        	<mx:HBox width="90%" horizontalGap="0" horizontalScrollPolicy="off">
+	        		<mx:Text id="msg" styleName="messageText"  fontWeight="bold" text="Creator:" />
+	        		<mx:Text id="creator" styleName="messageText" width="120" minWidth="120" truncateToFit="true" fontWeight="bold" text="" />
+
+		        </mx:HBox>
+		        <mx:DataGrid id="selectedUsers" dropEnabled="true" width="180" height="100%" >
+	            	<mx:columns>
+	                	<mx:DataGridColumn width="180" minWidth="180" dataField="lastName" headerText="Collaborators"/>
+	            	</mx:columns>
+	        	</mx:DataGrid>
+        	</mx:VBox>
+	        <mx:VBox paddingTop="24" height="200" verticalScrollPolicy="auto">
+	        	<mx:DataGrid id="allUsers" width="180"  height="100%" >
+            		<mx:columns>
+                		<mx:DataGridColumn width="180" minWidth="180" dataField="lastName" headerText="Registered Users" />
+            		</mx:columns>
+        		</mx:DataGrid>
+        	</mx:VBox>
+        </mx:HBox>			
+	</mx:HBox>
+	<mx:HBox width="100%" >
+			<mx:Spacer width="600"/>
+			<mx:Button label="cancel" id="cancelb" visible="false" />
+		<!--	<mx:Button label="Review Citation" id="reviewCitationb" visible="false" /> mantis:8390-->
+	</mx:HBox>
+</mx:VBox>
+
+<mx:StringValidator id="valDName" source="{dname}" property="text" minLength="1" maxLength="40"/>
+<mx:StringValidator id="valDDesc" source="{ddesc}" property="text" required="false" minLength="0" maxLength="250"/>
+<mx:StringValidator id="valDKeywords" source="{dkeywords}" property="text" required="true" minLength="1" maxLength="250"/>
+<mx:StringValidator id="valDLoc" source="{dloc}" property="text" required="true" minLength="0" maxLength="250"/>
+
+<mx:Script source="../helper/CommonHelper.as" />
+</mx:TitleWindow>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns="*" xmlns:mx="http://www.adobe.com/2006/mxml" 
+	title="Upload References"
+	showCloseButton="true" initialize="init()" 
+	layout="absolute" width="300" height="250" >
+	<mx:VBox width="100%" height="100%" horizontalAlign="center">
+			<mx:Spacer height="50" />
+			<mx:ProgressBar id="fileProgress" label="Uploaded 0%" minimum="0" maximum="100" mode="manual" />
+			<mx:Spacer height="15" />
+			<mx:HBox horizontalAlign="center">
+				<mx:Button id="selectFile" label="Select File" />
+				<mx:Button id="viewResult" label="View Results" enabled="false" />
+				<mx:Button id="cancelb" label="Cancel" />
+			</mx:HBox>
+	</mx:VBox>
+	<mx:Script source="../helper/UploadReferencesHelper.as" />
+</mx:TitleWindow>

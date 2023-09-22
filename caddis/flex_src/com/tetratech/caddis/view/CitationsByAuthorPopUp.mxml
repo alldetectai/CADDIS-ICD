@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow title="All Other References" maxHeight="500" maxWidth="500" height="500" width="500" horizontalScrollPolicy="off"
+            showCloseButton="true" xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+	<mx:VBox id="resultsBox" height="100%" paddingLeft="10" paddingBottom="10">
+        <mx:Text id="resultsMessage" styleName="messageText"  fontWeight="bold" />
+        <mx:Repeater id="displayCitations">
+         <mx:HBox horizontalAlign="left" horizontalGap="10">
+        	<mx:Text width="400" maxWidth="400" htmlText="{displayCitations.currentItem.displayTitle}"/>
+         </mx:HBox>	 
+		<mx:HRule width="100%" />
+        </mx:Repeater>						
+        <mx:HBox horizontalAlign="center" width="100%">
+        	<mx:Button id="closeb" label="Close"  />
+        </mx:HBox>							
+	</mx:VBox>
+</mx:TitleWindow>

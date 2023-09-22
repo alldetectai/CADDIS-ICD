@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 			 
+				applicationComplete="registerGlobalKeyHandler()" layout="absolute" xmlns:view="com.tetratech.caddis.view.*">
+	<view:DrawingBoardWrapper id="wrapper"/>
+	<mx:Script>
+		<![CDATA[
+			public function registerGlobalKeyHandler() :void
+			{
+				stage.addEventListener(KeyboardEvent.KEY_DOWN, wrapper.drawingBoard.keyHandler);
+			}
+		]]>
+	</mx:Script>
+	<mx:Style source="../styles/styles.css" />
+</mx:Application>
+

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow title="Add New Evidence to Diagram" xmlns:mx="http://www.adobe.com/2006/mxml"  
+	showCloseButton="true" initialize="init()" layout="absolute" 
+	width="850" height="600" xmlns:view="com.tetratech.caddis.view.*">
+		<mx:Style>
+		.centerAlignedBold {
+			fontWeight: bold;
+			textAlign: center;
+		}
+	</mx:Style>
+<mx:Form >
+	<mx:HBox>
+		<mx:VBox>
+			<mx:FormItem label="Selected Cause" horizontalAlign="right">
+				<mx:HBox width="100%"><mx:Spacer width="45" />
+						<mx:TextInput id="clabel" width="300" editable="false"  />	
+					<mx:List id="causeShapes" visible="false" includeInLayout="false" />
+				</mx:HBox>
+			</mx:FormItem>
+			<mx:FormItem label="Selected Effect(s)">
+				<mx:HBox width="100%"><mx:Spacer width="33" />
+					<mx:List id="shapes" rowCount="5" minWidth="300" maxWidth="650"
+							 variableRowHeight="true" wordWrap="true" 
+							 itemRenderer="com.tetratech.caddis.view.SymbolListItemRenderer">
+					</mx:List>
+				</mx:HBox>
+			<!--	<mx:HBox width="100%"><mx:Spacer width="33" />
+					<mx:List id="shapes" rowCount="5" minWidth="300" maxWidth="650"
+					 variableRowHeight="true" wordWrap="true" allowMultipleSelection="true" 
+					 toolTip="Click on a shape to view its Linkages"
+					 itemDoubleClick="shapeClickHandler(event)" doubleClickEnabled="true"
+					 itemRenderer="com.tetratech.caddis.view.SymbolListItemRenderer">
+					</mx:List>
+				</mx:HBox> -->
+			</mx:FormItem>
+
+			<mx:FormItem label="Search Existing Citations">
+				<mx:HBox>
+					<mx:TextInput id="filterc" width="300" /><!--defaultButton="{searchb}" -->
+				</mx:HBox>
+			</mx:FormItem>
+		</mx:VBox>
+		<mx:FormItem >
+			<mx:VBox>
+				<mx:Spacer height="20" />
+				<mx:Button label="Search Database(s) by Cause &amp; Effect Terms" id="searchExternalSourceb" width="250"/>
+				<mx:Spacer height="5" />
+			<!--	<mx:Button label="Manually Add New Citation" id="newcitationb" width="250" />
+				<mx:Spacer height="5" />
+				<mx:Button label="Upload New Citation(s)" id="uploadcitations" initialize="initUploadCitations()" width="250"/>
+				<mx:Button label="Edit citation" id="editcitationb" />
+				-->
+			</mx:VBox>
+		</mx:FormItem>
+	</mx:HBox>
+	<mx:RadioButtonGroup id="selectedCitation" />
+	<mx:FormItem label="Browse Existing Citations">
+		<!--#8399
+		<mx:List id="citations" variableRowHeight="true" wordWrap="true"
+		  rowCount="5" width="600" maxWidth="600" height="150" 
+		  allowMultipleSelection="false"
+		  dragMoveEnabled="true" dragEnabled="true" doubleClickEnabled="true">
+		</mx:List> dataProvider="{employees}"-->
+			
+
+		<mx:DataGrid id="citations" width="100%" height="100%" rowCount="10" >
+			<mx:columns>
+				<mx:DataGridColumn dataField="author" width="150" headerText="AUTHOR" wordWrap="true" headerStyleName="centerAlignedBold" textAlign="left"/>
+				<mx:DataGridColumn dataField="year" width="60" headerText="YEAR" headerStyleName="centerAlignedBold" textAlign="left"/>
+				<mx:DataGridColumn dataField="title" width="350" headerText="TITLE" wordWrap="true" headerStyleName="centerAlignedBold" textAlign="left"/>
+				<mx:DataGridColumn dataField="id" width="70" headerText="VIEW EVIDENCE DETAILS" headerWordWrap="true" headerStyleName="centerAlignedBold">
+					<mx:itemRenderer>
+						<mx:Component>
+							<mx:HBox horizontalAlign="center" width="100%">
+								<mx:RadioButton group="{outerDocument.selectedCitation}" />
+							</mx:HBox>
+						</mx:Component>
+					</mx:itemRenderer>
+					</mx:DataGridColumn>
+			</mx:columns>
+		</mx:DataGrid>
+
+	</mx:FormItem>
+	<!--#8399
+	<mx:FormItem label="Selected Citations">
+		<mx:List id="selcitations" variableRowHeight="true" wordWrap="true"
+		 rowCount="5" width="600" maxWidth="600" height="150" 
+		 allowMultipleSelection="false"  dropEnabled="true">
+		</mx:List>
+	</mx:FormItem>
+	-->
+	<mx:FormItem>
+		<mx:HBox horizontalAlign="center">
+			<!--	<mx:Button label="Save" id="saveb">
+			</mx:Button>-->
+			<mx:Button label="Cancel" id="cancelb">
+			</mx:Button>
+
+			
+			<mx:Spacer width="200"/></mx:HBox>
+	<!--	<mx:FormItem label="Supported Linkage" >
+		<mx:CheckBox id="slinkagecb"  selected="true" />
+	</mx:FormItem> 
+		-->
+	</mx:FormItem>
+</mx:Form>
+<mx:Script source="../helper/NewLinkageHelper.as" />
+<mx:Script source="../helper/NewAndEditCitationHelper.as" />
+<mx:Script source="../helper/ManageLinkagesHelper.as" />
+<mx:Script source="../helper/UploadCitationsHelper.as" />
+<mx:Script source="../helper/CitationPopUpHelper.as" />
+</mx:TitleWindow>
+

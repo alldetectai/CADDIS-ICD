@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow  title="Log In" xmlns:mx="http://www.adobe.com/2006/mxml" showCloseButton="true" layout="absolute" width="400" height="320">
+<mx:VBox>
+	
+
+<mx:VBox height="100" width="100%">
+			<mx:Text paddingTop="10" paddingLeft="10" width="360" truncateToFit="true"
+			text="Log in to the ICD application using your EPA LAN id and password (if you are an EPA employee), or the user name and password you created when registering in the EPA Portal (if you are not an EPA employee). Remember that to log into the ICD application, you must have been granted access to the CADDIS community via the EPA Portal." 
+			styleName="messageText" fontWeight="bold"/>
+</mx:VBox>
+
+
+		<mx:Form defaultButton="{loginb}" paddingTop="0">
+			<mx:FormItem>
+				<mx:Text id="error" paddingLeft="10" 
+				text="Please correct error(s) indicated below." 
+				styleName="errorText" fontWeight="bold" visible="false"/>
+			</mx:FormItem>
+			<mx:FormItem label="User name" required="true">
+				<mx:TextInput id="username" width="200"></mx:TextInput>
+			</mx:FormItem>
+			<mx:FormItem label="Password" required="true">
+				<mx:TextInput displayAsPassword="true" id="password" width="200"></mx:TextInput>
+			</mx:FormItem>
+			<mx:FormItem>
+				<mx:Spacer width="100%" height="15" />
+			</mx:FormItem>
+			<mx:FormItem>
+				<mx:HBox paddingLeft="50">
+					<mx:Button label="Log In" id="loginb"></mx:Button>
+					<mx:Button label="Cancel" id="cancelb"></mx:Button>
+				</mx:HBox>
+			</mx:FormItem>
+		</mx:Form>	
+	</mx:VBox>
+	<mx:StringValidator id="valUserName" source="{username}" property="text" required="true" minLength="1" maxLength="50"/>
+	<mx:StringValidator id="valPassword" source="{password}" property="text" required="true" minLength="1" maxLength="50"/>
+</mx:TitleWindow>

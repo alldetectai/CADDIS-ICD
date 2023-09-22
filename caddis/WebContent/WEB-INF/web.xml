@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>CADDIS3</display-name>
+	<context-param>
+		<param-name>flex.class.path</param-name>
+		<param-value>/WEB-INF/flex/hotfixes,/WEB-INF/flex/jars</param-value>
+	</context-param>
+
+	<!-- Http Flex Session attribute and binding listener support -->
+	<listener>
+		<listener-class>flex.messaging.HttpFlexSession</listener-class>
+	</listener>
+
+	<!-- MessageBroker Servlet -->
+	<servlet>
+		<servlet-name>MessageBrokerServlet</servlet-name>
+		<servlet-class>flex.messaging.MessageBrokerServlet</servlet-class>
+		<init-param>
+			<param-name>services.configuration.file</param-name>
+			<param-value>/WEB-INF/flex/services-config.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>flex.write.path</param-name>
+			<param-value>/WEB-INF/flex</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>DownloadCSV</servlet-name>
+		<servlet-class>com.tetratech.caddis.servlet.DownloadCSV</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>DownloadPNGImage</servlet-name>
+		<servlet-class>com.tetratech.caddis.servlet.DownloadPNGImage</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>DownloadCitation</servlet-name>
+		<servlet-class>com.tetratech.caddis.servlet.DownloadCitation</servlet-class>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>UploadReferences</servlet-name>
+		<servlet-class>com.tetratech.caddis.servlet.UploadReferences</servlet-class>
+		<load-on-startup>4</load-on-startup>
+	</servlet>
+		<servlet>
+		<servlet-name>GetPageCitations</servlet-name>
+		<servlet-class>com.tetratech.caddis.servlet.GetPageCitations</servlet-class>
+		<load-on-startup>5</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MessageBrokerServlet</servlet-name>
+		<url-pattern>/messagebroker/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DownloadCSV</servlet-name>
+		<url-pattern>/DownloadCSV</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DownloadPNGImage</servlet-name>
+		<url-pattern>/DownloadPNGImage</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DownloadCitation</servlet-name>
+		<url-pattern>/DownloadCitation</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UploadReferences</servlet-name>
+		<url-pattern>/UploadReferences</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GetPageCitations</servlet-name>
+		<url-pattern>/GetPageCitations</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	<!-- tomcat setup -->
+	<resource-ref>
+		 <description>CADDIS Oracle Datasource</description>
+		 <res-ref-name>jdbc/CADDIS_DS</res-ref-name>
+		 <res-type>javax.sql.DataSource</res-type>
+		 <res-auth>Container</res-auth>
+	</resource-ref>
+
+	<!-- for WebSphere deployment, please uncomment -->
+	<!--
+		<resource-ref> <description>Flex Messaging WorkManager</description>
+		<res-ref-name>wm/MessagingWorkManager</res-ref-name>
+		<res-type>com.ibm.websphere.asynchbeans.WorkManager</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope> </resource-ref>
+	-->
+</web-app>

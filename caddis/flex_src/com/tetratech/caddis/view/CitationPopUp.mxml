@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" title="" layout="absolute" width="800" height="500"  showCloseButton="true" >
+
+	<mx:Form paddingTop="0">
+		<mx:FormItem>
+			<mx:Text id="error"
+				text="Please correct error(s) indicated below." 
+				styleName="errorText" fontWeight="bold" visible="false"/>
+		</mx:FormItem>
+	
+		<mx:FormItem label="Author" required="true">
+			<mx:TextInput id="cauthor" width="300"></mx:TextInput>
+		</mx:FormItem>
+		<mx:FormItem label="Year" required="true">
+			<mx:TextInput id="cyear" width="100"></mx:TextInput>
+		</mx:FormItem>
+		<mx:FormItem label="Title" required="true">
+			<mx:TextInput id="ctitle" width="500"></mx:TextInput>
+		</mx:FormItem>
+		<mx:FormItem label="Journal" required="true" >
+			<mx:TextInput id="cjournal" width="300"></mx:TextInput>
+		</mx:FormItem>
+		<mx:FormItem label="Volume(issue):pages" required="true">
+			<mx:TextInput id="cvolume" width="100"></mx:TextInput>
+		</mx:FormItem>
+		<mx:FormItem label="Abstract" >
+			<mx:TextArea id="cabstract" height="200" width="400" ></mx:TextArea>
+		</mx:FormItem>
+		<!--
+		<mx:FormItem label="">
+			<mx:HBox>
+				<mx:CheckBox id="allorganism" label="Select All" />
+			</mx:HBox>
+		</mx:FormItem>
+		<mx:FormItem label="Organism" >
+			<mx:List id="corganism" allowMultipleSelection="true" rowCount="5" ></mx:List>
+		</mx:FormItem>
+		-->
+		<mx:FormItem label="">
+			<mx:HBox>
+				<mx:CheckBox id="approvedCB" label="Approved" />
+			</mx:HBox>
+		</mx:FormItem>
+		<mx:FormItem>
+			<mx:HBox horizontalAlign="center">
+				<mx:Button label="Save" id="saveb">
+				</mx:Button>
+				<mx:Button label="Cancel" id="cancelb">
+				</mx:Button>
+			</mx:HBox>
+		</mx:FormItem>
+	</mx:Form>
+	<mx:StringValidator id="valAuthor" source="{cauthor}" property="text" required="true" minLength="1" maxLength="255"/>
+	<mx:NumberValidator id="valYear" source="{cyear}"  property="text" required="true" minValue="1900" maxValue="9999"/>
+	<mx:StringValidator id="valTitle" source="{ctitle}" property="text" required="true" minLength="1" maxLength="255"/>
+	<mx:StringValidator id="valJournal" source="{cjournal}" property="text" required="true" minLength="0" maxLength="255"/>
+	<mx:StringValidator id="valVolume" source="{cvolume}" property="text" required="true" minLength="0" maxLength="100"/>
+	<!-- <mx:RegExpValidator id="valUrl" source="{curl}" property="text" required="false" expression="^(https?|ftp):\/\/.*$" noMatchError="Enter a valid URL that begins with http://, https://, or ftp://"/> -->
+</mx:TitleWindow>

@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:fc="http://www.adobe.com/2006/fc" layout="absolute" autoLayout="true"
+				width="800" height="600" showCloseButton="true" >
+	
+	<mx:Script>
+		<![CDATA[
+			import com.tetratech.caddis.common.Constants;
+			import mx.collections.ArrayCollection;
+			
+			
+			private function substringAuthorFilter(element:*, text:String):Boolean
+			{
+				var label:String=cauthor.itemToLabel(element);
+				return(label.toLowerCase().indexOf(text.toLowerCase())!=-1);
+			}  
+			
+			private function substringTitleFilter(element:*, text:String):Boolean
+			{
+				var label:String=ctitle.itemToLabel(element);
+				return(label.toLowerCase().indexOf(text.toLowerCase())!=-1);
+			}
+			
+			//	private function substringOTitleFilter(element:*, text:String):Boolean
+			//	{
+			//		var label:String=cotitle.itemToLabel(element);
+			//		return(label.toLowerCase().indexOf(text.toLowerCase())!=-1);
+			//	}
+			
+			private function substringJournalFilter(element:*, text:String):Boolean
+			{
+				var label:String=cjournal.itemToLabel(element);
+				return(label.toLowerCase().indexOf(text.toLowerCase())!=-1);
+			}
+		]]> 
+	</mx:Script>
+	
+	<!-- states for different publication type  -->
+	<mx:states>
+		<!-- Book Chapter -->
+		<mx:State name="bc">
+			<mx:RemoveChild target="{journalField}"/>
+			<mx:RemoveChild target="{volumeField}"/>
+			<mx:RemoveChild target="{issueField}"/>
+			<mx:RemoveChild target="{startPageField}"/>
+			<mx:RemoveChild target="{endPageField}"/>
+			<mx:AddChild relativeTo="{keywordField}" position="before">
+				<mx:target>
+					<mx:FormItem label="Book" required="true">
+						<mx:TextInput id="cbook" width="500"/>
+					</mx:FormItem>
+				</mx:target>
+			</mx:AddChild>
+			<mx:AddChild relativeTo="{keywordField}" position="before">
+				<mx:target>
+					<mx:FormItem label="Editor(s)" required="true" >
+						<mx:TextInput id="cbookchaptereditor" width="500"/>
+					</mx:FormItem>
+				</mx:target>
+			</mx:AddChild>
+			<mx:AddChild relativeTo="{keywordField}" position="before">
+				<mx:target>
+					<mx:FormItem label="Publisher" required="false">
+						<mx:TextInput id="cbookchapterpublisher" width="500"/>
+					</mx:FormItem>
+				</mx:target>
+			</mx:AddChild>
+			<mx:AddChild relativeTo="{keywordField}" position="before">
+				<mx:target>
+					<mx:FormItem id="bcstartPageField" label="Start Page">
+						<mx:TextInput id="cbcstartpage" width="100"></mx:TextInput>
+					</mx:FormItem>
+				</mx:target>
+			</mx:AddChild>
+			<mx:AddChild relativeTo="{keywordField}" position="before">
+				<mx:target>
+					<mx:FormItem id="bcendPageField" label="End Page" >
+						<mx:TextInput id="cbcendpage" width="100"></mx:TextInput>
+					</mx:FormItem>
+				</mx:target>
+			</mx:AddChild>
+		</mx:State>
+		<!-- Book -->
+		<mx:State name="b">
+			<mx:RemoveChild target="{journalField}"/>
+			<mx:RemoveChild target="{volumeField}"/>
+			<mx:RemoveChild target="{issueField}"/>
+			<mx:RemoveChild target="{startPageField}"/>
+			<mx:RemoveChild target="{endPageField}"/>
+			<mx:AddChild  relativeTo="{keywordField}" position="before">
+				<mx:target>
+					<mx:FormItem label="Editor(s)">
+						<mx:TextInput id="cbookeditor" width="500"/>
+					</mx:FormItem>
+				</mx:target>
+			</mx:AddChild>
+			<mx:AddChild relativeTo="{keywordField}" position="before">
+				<mx:target>
+					<mx:FormItem label="Publisher" required="false">
+						<mx:TextInput id="cbookpublisher" width="500"/>
+					</mx:FormItem>
+				</mx:target>
+			</mx:AddChild>
+			<mx:AddChild relativeTo="{keywordField}" position="before">
+				<mx:target>
+					<mx:FormItem label="Pages" required="false">
+						<mx:TextInput id="cbpages" width="100"/>
+					</mx:FormItem>
+				</mx:target>
+			</mx:AddChild>
+		</mx:State>
+		<!-- Report -->
+		<mx:State name="r">
+			<mx:RemoveChild target="{journalField}"/>
+			<mx:RemoveChild target="{volumeField}"/>
+			<mx:RemoveChild target="{issueField}"/>
+			<mx:RemoveChild target="{startPageField}"/>
+			<mx:RemoveChild target="{endPageField}"/>
+			<mx:AddChild relativeTo="{keywordField}" position="before">
+				<mx:target>
+					<mx:FormItem label="Agency/Publisher" required="true">
+						<mx:TextInput id="creportpublisher" width="500"/>
+					</mx:FormItem>
+				</mx:target>
+			</mx:AddChild>
+			<mx:AddChild relativeTo="{keywordField}" position="before">
+				<mx:target>
+					<mx:FormItem label="Report #" required="false">
+						<mx:TextInput id="creportnum" width="100"/>
+					</mx:FormItem>
+				</mx:target>
+			</mx:AddChild>
+			<mx:AddChild relativeTo="{keywordField}" position="before">
+				<mx:target>
+					<mx:FormItem label="Pages" required="false">
+						<mx:TextInput id="creportpages" width="100"/>
+					</mx:FormItem>
+				</mx:target>
+			</mx:AddChild>
+		</mx:State>
+		<!-- Other -->
+		<mx:State name="o">
+			<!--<mx:RemoveChild target="{yearField}"/>
+			<mx:RemoveChild target="{titleField}"/>-->
+			<mx:RemoveChild target="{journalField}"/>
+			<mx:RemoveChild target="{volumeField}"/>
+			<mx:RemoveChild target="{issueField}"/>
+			<mx:RemoveChild target="{startPageField}"/>
+			<mx:RemoveChild target="{endPageField}"/>
+			
+			<!--<mx:AddChild relativeTo="{keywordField}" position="before">
+			<mx:target>
+			<mx:FormItem id="oyearField" label="Year" required="false">
+			<mx:TextInput id="coyear" width="100"></mx:TextInput>
+			</mx:FormItem>
+			</mx:target>
+			</mx:AddChild>
+			<mx:AddChild relativeTo="{keywordField}" position="before">
+			<mx:target>
+			<mx:FormItem id="otitleField" label="Title" required="false">
+			<fc:AutoComplete id="cotitle" width="500" lookAhead="true"   filterFunction="substringOTitleFilter"/>
+			</mx:FormItem>
+			</mx:target>
+			</mx:AddChild>-->
+			<mx:AddChild relativeTo="{keywordField}" position="before">
+				<mx:target>
+					<mx:FormItem label="Source" required="false">
+						<mx:TextInput id="cothersource" width="500"/>
+					</mx:FormItem>
+				</mx:target>
+			</mx:AddChild>
+			<mx:AddChild relativeTo="{keywordField}" position="before">
+				<mx:target>
+					<mx:FormItem label="Type" required="false">
+						<mx:TextInput id="cothertype" width="500"/>
+					</mx:FormItem>
+				</mx:target>
+			</mx:AddChild>
+			<mx:AddChild relativeTo="{keywordField}" position="before">
+				<mx:target>
+					<mx:FormItem label="Pages" required="false">
+						<mx:TextInput id="cotherpages" width="100"/>
+					</mx:FormItem>
+				</mx:target>
+			</mx:AddChild>
+		</mx:State>
+	</mx:states>
+	<!-- end of states for different publication type  -->
+	
+	<mx:Form paddingLeft="10" paddingRight="10" paddingTop="10" paddingBottom="10" labelWidth="150">
+		<mx:FormItem>
+			<mx:Text id="error" text="Please correct error(s) indicated below." 
+					 styleName="errorText" fontWeight="bold" visible="false" width="500"/>
+		</mx:FormItem>
+		<mx:FormItem label="Publication Type" required="true">
+			<mx:ComboBox textAlign="left" id="cpubType" width="200" />
+		</mx:FormItem>
+		<mx:FormItem label="Author(s)" required="true">
+			<fc:AutoComplete id="cauthor" width="500" lookAhead="true" filterFunction="substringAuthorFilter"/>
+		</mx:FormItem>
+		<mx:FormItem id="yearField" label="Year" required="{cpubType.selectedItem.id != Constants.PUBLICATION_TYPE_OTHER}">
+			<mx:TextInput id="cyear" width="100"></mx:TextInput>
+		</mx:FormItem>
+		<mx:FormItem id="titleField" label="Title" required="{cpubType.selectedItem.id != Constants.PUBLICATION_TYPE_OTHER}">
+			<fc:AutoComplete id="ctitle" width="500" lookAhead="true"  filterFunction="substringTitleFilter"/>
+			<!--<mx:TextInput id="ctitle" width="500"></mx:TextInput>-->
+		</mx:FormItem>
+		
+		<mx:FormItem id="journalField" label="Journal" required="true">
+			<fc:AutoComplete id="cjournal" width="500" lookAhead="true"  filterFunction="substringJournalFilter"/>
+		</mx:FormItem>
+		<mx:FormItem id="volumeField" label="Volume" required="true">
+			<mx:TextInput id="cvolume" width="100"></mx:TextInput>
+		</mx:FormItem>
+		<mx:FormItem id="issueField" label="Issue" required="false">
+			<mx:TextInput id="cissue" width="100"></mx:TextInput>
+		</mx:FormItem>
+		<mx:FormItem id="startPageField" label="Start Page" required="true">
+			<mx:TextInput id="cstartpage" width="100"></mx:TextInput>
+		</mx:FormItem>
+		<mx:FormItem id="endPageField" label="End Page" required="true">
+			<mx:TextInput id="cendpage" width="100"></mx:TextInput>
+		</mx:FormItem>
+		<mx:FormItem id="keywordField" label="Keyword(s)" required="false">
+			<mx:TextInput id="ckeyword" width="500"></mx:TextInput>
+		</mx:FormItem>
+		<mx:FormItem label="URL Exit Disclaimer">
+			<mx:HBox>
+				<mx:CheckBox id="cexitDisclaimer" />
+			</mx:HBox>
+		</mx:FormItem>
+		<mx:FormItem label="URL" required="false" >
+			<mx:TextInput id="curl" width="500"></mx:TextInput>
+		</mx:FormItem>
+		<mx:FormItem label="Abstract" >
+			<mx:TextArea id="cabstract" height="100" width="500" ></mx:TextArea>
+		</mx:FormItem>
+		<mx:FormItem label="Annotation" >
+			<mx:TextArea id="cannotation" height="100" width="500" ></mx:TextArea>
+		</mx:FormItem>
+		<mx:FormItem label="DOI" required="false" >
+			<mx:TextInput id="cdoi" width="100"></mx:TextInput>
+		</mx:FormItem>
+		<mx:FormItem label="">
+			<mx:HBox>
+				<mx:CheckBox id="approved" label="Approved" />
+			</mx:HBox>
+		</mx:FormItem>
+		<mx:FormItem>
+			<mx:HBox horizontalAlign="center">
+				<mx:Button label="Save" id="saveb">
+				</mx:Button>
+				<mx:Button label="Cancel" id="cancelb">
+				</mx:Button>
+			</mx:HBox>
+		</mx:FormItem>
+	</mx:Form>
+	
+	<mx:StringValidator id="valAuthor" source="{cauthor}" property="text" required="true" minLength="1" maxLength="500"/>
+	<mx:StringValidator id="valYear" source="{cyear}" property="text" required="{cpubType.selectedItem.id != Constants.PUBLICATION_TYPE_OTHER}" minLength="1" maxLength="5"/>
+	<mx:StringValidator id="valTitle" source="{ctitle}" property="text" required="{cpubType.selectedItem.id != Constants.PUBLICATION_TYPE_OTHER}" minLength="1" maxLength="500"/>
+	<mx:StringValidator id="valKeyword" source="{ckeyword}" property="text" required="false" minLength="0" maxLength="1000"/>
+	<mx:StringValidator id="valDOI" source="{cdoi}" property="text" required="false" minLength="0" maxLength="50"/>
+	<mx:StringValidator id="valCURL" source="{curl}" property="text" required="false" minLength="0" maxLength="255"/>
+	<mx:StringValidator id="valJournal" source="{cjournal}" property="text" required="true" minLength="1" maxLength="255"/>
+	<mx:NumberValidator id="valVolume" source="{cvolume}" property="text" required="true" minValue="1" maxValue="9999"/>
+	<mx:StringValidator id="valIssue" source="{cissue}" property="text" required="false" minLength="0" maxLength="50"/>
+	<mx:StringValidator id="valStartpage" source="{cstartpage}" property="text" required="true" minLength="1" maxLength="50"/>
+	<mx:StringValidator id="valEndpage" source="{cendpage}" property="text" required="true" minLength="1" maxLength="50"/>
+	<mx:StringValidator id="valBook" source="{cbook}" property="text" required="true" minLength="1" maxLength="255"/>
+	<mx:NumberValidator id="valBookPages" source="{cbpages}" property="text" required="false" minValue="1" maxValue="99999"/>
+	<mx:StringValidator id="valBookChapterEditor" source="{cbookchaptereditor}" property="text" required="true" minLength="1" maxLength="255"/>
+	<mx:StringValidator id="valBookChapterPublisher" source="{cbookchapterpublisher}" property="text" required="false" minLength="0" maxLength="255"/>
+	<mx:NumberValidator id="valBCStartpage" source="{cbcstartpage}" property="text" required="false" minValue="1" maxValue="99999"/>
+	<mx:NumberValidator id="valBCEndpage" source="{cbcendpage}" property="text" required="false" minValue="1" maxValue="99999"/>
+	<mx:StringValidator id="valBookEditor" source="{cbookeditor}" property="text" required="false" minLength="0" maxLength="255"/>
+	<mx:StringValidator id="valBookPublisher" source="{cbookpublisher}" property="text" required="false" minLength="0" maxLength="255"/>	
+	<mx:StringValidator id="valReportPublisher" source="{creportpublisher}" property="text" required="true" minLength="1" maxLength="255"/>
+	<mx:StringValidator id="valReportNum" source="{creportnum}" property="text" required="false" minLength="0" maxLength="255"/>
+	<mx:NumberValidator id="valReportPages" source="{creportpages}" property="text" required="false" minValue="1" maxValue="99999"/>
+	<mx:StringValidator id="valOtherSource" source="{cothersource}" property="text" required="false" minLength="0" maxLength="100"/>
+	<mx:StringValidator id="valOtherType" source="{cothertype}" property="text" required="false" minLength="0" maxLength="100"/>
+	<mx:NumberValidator id="valOtherPage" source="{cotherpages}" property="text" required="false" minValue="1" maxValue="99999"/>
+	<!--<mx:StringValidator id="valOtherYear" source="{coyear}" property="text" required="false" minLength="1" maxLength="5"/>
+	<mx:StringValidator id="valOtherTitle" source="{cotitle}" property="text" required="false" minLength="1" maxLength="500"/>-->
+</mx:TitleWindow>

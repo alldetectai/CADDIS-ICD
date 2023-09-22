@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="100%" height="100%" 
+	backgroundColor="0xCCCCCC" 
+	xmlns:view="com.tetratech.caddis.view.*"
+	horizontalScrollBarStyleName="appScrollBar" 
+	verticalScrollBarStyleName="appScrollBar" 
+	horizontalScrollPolicy="off"
+	verticalScrollPolicy="off" >
+	<mx:VBox horizontalAlign="center" width="100%" height="100%" horizontalScrollPolicy="off" verticalScrollPolicy="off" verticalGap="0" horizontalGap="0">
+		<mx:Label text="The CADDIS Interactive Conceptual Diagram (ICD) tool" fontSize="14" fontWeight="bold" textAlign="center" paddingTop="5"/>
+		<mx:Spacer height="2" />
+		<view:TabNavigator id="tabNav" name="tabNav" width="1024" />
+		<view:Menu id="menu" name="menu"  width="1024" x="0" y="0" height="26" horizontalScrollPolicy="off"/>
+		
+		<mx:VBox id="hometextarea" width="1023" height="767" horizontalAlign="center" horizontalScrollPolicy="off" verticalScrollPolicy="auto"  verticalGap="0"
+					 visible="true">
+				<view:HomeIntroduction id="hometext" />
+		</mx:VBox> 
+		<mx:VBox id="drawingBoardP" width="1023" height="767" horizontalAlign="center" horizontalScrollPolicy="off" verticalScrollPolicy="auto"  verticalGap="0" 
+					 visible="false"
+					 >
+					<view:DrawingBoard id="drawingBoard" width="1024" height="768" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+					</view:DrawingBoard>
+		</mx:VBox> 	
+		<mx:VBox id="searchArea" width="1023" height="767" horizontalAlign="center" horizontalScrollPolicy="off" verticalScrollPolicy="auto"  verticalGap="0" 
+				 visible="false"
+				 >
+			<view:NavSearchPopUp id="searchScreen" />
+			
+		</mx:VBox> 	
+	</mx:VBox>
+</mx:Canvas>

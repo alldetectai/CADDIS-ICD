@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow title="Get Started with a Diagram" xmlns:mx="http://www.adobe.com/2006/mxml" showCloseButton="true" layout="absolute" 
+				 width="680" height="400">
+<mx:HBox top="30">
+	<mx:VBox left="20"  horizontalAlign="left" >
+		<mx:Text left="20" text="  There are 3 ways to begin working with a diagram." />
+		<mx:Text width="300">
+			<mx:htmlText>
+				<![CDATA[ <li><b>Create a new diagram using standard terms. </b>This allows you to create a new diagram by selecting multiple terms from a standardized list of sources, stressors, and responses. The selected terms then automatically become the initial shapes in your diagram.</li>]]>
+				<![CDATA[ <li><b>Create a new diagram manually. </b>This allows you to create a new diagram by adding any term or shape to your diagram, one shape at a time.</li>]]>
+				<![CDATA[ <li><b>Open existing diagram. </b>This allows you to open and modify an existing diagram, whether that diagram was created by you or by another registered user. </li>]]>
+				
+			</mx:htmlText>
+		</mx:Text>
+	</mx:VBox>	
+	
+	<mx:VBox left="20" verticalAlign="middle" width="50%" height="75%">
+	    <mx:Button id="createSTD" label="Create new diagram using standard terms" width="260" height="30" />
+		<mx:Button id="createManu" label="Create new diagram manually"  width="260" height="30" />
+		<mx:Button id="openExist" label="Open existing diagram"  width="260" height="30"/>
+    </mx:VBox>
+</mx:HBox>
+	<mx:Script source="../helper/CommonHelper.as" />
+</mx:TitleWindow>

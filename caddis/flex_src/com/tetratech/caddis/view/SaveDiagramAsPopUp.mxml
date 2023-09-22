@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow title="Save Diagram As" xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" showCloseButton="true"  width="400" height="350">
+<mx:Model id="defaultDimensions">
+	<dimensions>
+		<dimension label="1024x768 (16 Tiers)" width="1024" height="768"></dimension>
+		<dimension label="1280x960 (20 Tiers)" width="1280" height="960"></dimension>
+		<dimension label="1536x1152 (24 Tiers)" width="1536" height="1152"></dimension>
+		<dimension label="1972x1344 (28 Tiers)" width="1792" height="1344"></dimension>
+		<dimension label="2048x1536 (32 Tiers)" width="2048" height="1536"></dimension>
+		<dimension label="2304x1728 (36 Tiers)" width="2304" height="1728"></dimension>
+		<dimension label="2560x1920 (40 Tiers)" width="2560" height="1920"></dimension>
+		<dimension label="2816x2112 (44 Tiers)" width="2816" height="2112"></dimension>
+	</dimensions>
+</mx:Model>
+<mx:Form defaultButton="{createb}" paddingTop="0">
+	<mx:FormItem>
+		<mx:Text id="error"
+			text="Please correct error(s) indicated below." 
+			styleName="errorText" fontWeight="bold" visible="false"/>
+	</mx:FormItem>
+
+	<mx:FormItem label="Name" required="true">
+		<mx:TextInput id="dname"  maxChars="40" width="200"></mx:TextInput>
+	</mx:FormItem>
+	<mx:FormItem label="Size (in pixels)" required="true">
+		<mx:ComboBox id="ddim" dataProvider="{defaultDimensions.dimension}" >
+		</mx:ComboBox>
+	</mx:FormItem>
+	<mx:FormItem label="Keywords" required="true">
+		<mx:TextInput id="dkeywords" maxChars="250" width="200" />
+	</mx:FormItem>
+	<mx:FormItem label="Site Location" required="true">
+		<mx:TextInput id="dloc" maxChars="250" width="200" />
+	</mx:FormItem>
+	<mx:FormItem label="Description" required="false">
+		<mx:TextArea id="ddesc"  height="75" width="200"  />
+	</mx:FormItem>
+	<mx:FormItem>
+		<mx:HBox horizontalAlign="center">
+			<mx:Button label="Save As" id="createb">
+			</mx:Button>
+			<mx:Button label="Cancel" id="cancelb">
+			</mx:Button>
+		</mx:HBox>
+	</mx:FormItem>
+</mx:Form>
+<mx:StringValidator id="valDName" source="{dname}" property="text" minLength="1" maxLength="40"/>
+<mx:StringValidator id="valDDesc" source="{ddesc}" property="text" required="false" minLength="0" maxLength="250"/>
+<mx:StringValidator id="valDKeywords" source="{dkeywords}" property="text" required="true" minLength="1" maxLength="250"/>
+<mx:StringValidator id="valDLoc" source="{dloc}" property="text" required="true" minLength="0" maxLength="250"/>
+</mx:TitleWindow>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow title="Diagram History" xmlns:mx="http://www.adobe.com/2006/mxml" 
+	showCloseButton="true" layout="absolute" width="800" height="600" >
+
+	<mx:VBox width="100%" paddingTop="10" paddingLeft="20" paddingRight="20" height="550" verticalScrollPolicy="off">
+		<mx:Text styleName="messageText" id="dname" />
+		<mx:VBox height="250" verticalScrollPolicy="auto" width="100%">
+			<mx:Text styleName="messageText"  fontWeight="bold" text="Diagram Revision List (Double click to open the diagram)" />
+
+	        	<mx:DataGrid doubleClickEnabled="true" id="diagramList" width="100%" height="100%"  >
+            	<mx:columns>
+                <mx:DataGridColumn width="120" minWidth="120" dataField="name" headerText="Name"/>
+                <mx:DataGridColumn  width="300" minWidth="300" wordWrap="true" dataField="description" headerText="Description"/>
+                <mx:DataGridColumn  width="100" minWidth="100" wordWrap="true" id="updatedUser"  headerText="Last Updated"/>
+            	<mx:DataGridColumn  width="120" minWidth="120" dataField="updatedDate"  headerText="Date"/>
+
+            	<mx:DataGridColumn id="deleteRevison" width="16" minWidth="16" draggable="false" headerText="" sortable="false">
+	            	<mx:itemRenderer>
+	               		<mx:Component>
+	                  		<mx:VBox horizontalScrollPolicy="off">
+	                     		<mx:Script>
+	                     			<![CDATA[
+	                     				import com.tetratech.caddis.drawing.CDiagram;
+	                     				import com.tetratech.caddis.common.Constants;
+	                     				
+	                     			]]>
+	                     		</mx:Script>
+
+	                     		<mx:Image source="{Constants.deleteIcon}" toolTip="delete selected diagram revision" buttonMode="true"/>
+	                  		</mx:VBox>
+	               		</mx:Component>
+	            	</mx:itemRenderer>
+            	</mx:DataGridColumn>
+            	</mx:columns>
+        	</mx:DataGrid>
+        	</mx:VBox>
+        	
+        	<mx:VBox paddingTop="10" height="220" verticalScrollPolicy="auto" width="100%">
+	         
+	        	<mx:DataGrid  id="comments" width="100%" height="100%"  >
+            	<mx:columns>
+                <mx:DataGridColumn width="120" minWidth="120" dataField="commentor" headerText="Commentor"/>
+                <mx:DataGridColumn  width="400" minWidth="400" wordWrap="true" dataField="commentText" headerText="Comment"/>
+                <mx:DataGridColumn  width="150" minWidth="150"  dataField="createdDate" headerText="Date"/>
+            	</mx:columns>
+        	</mx:DataGrid>
+        	</mx:VBox>
+        	<mx:HBox width="100%" horizontalAlign="center">
+
+			<mx:Button label="Close" id="closeb"></mx:Button>
+			</mx:HBox>
+        	</mx:VBox>
+
+</mx:TitleWindow>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow title="View/Edit Evidence Details" maxHeight="650" maxWidth="850" height="610" width="840" horizontalScrollPolicy="off"
+				showCloseButton="true" xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+		<mx:Style>
+		.centerAlignedBold {
+			fontWeight: bold;
+			textAlign: center;
+		}
+	</mx:Style>
+	<mx:Form>
+		
+		<mx:FormItem>
+			<mx:HBox width="100%" height="100%">
+				<mx:Label text="Citation:"/><mx:Spacer width="5" /><mx:Label id="citationDesc"/>
+				
+			</mx:HBox>
+		</mx:FormItem>
+
+		<mx:FormItem>
+			<mx:VBox width="100%" height="100%">
+				<mx:Label text="Selected Cause [term] AND Selected Effect(s) [term(s)]"/>
+				<mx:Spacer width="10" />
+				<mx:DataGrid id="evidences" width="100%" height="100%" rowCount="10" horizontalScrollPolicy="on" >
+					<mx:columns>
+						<mx:DataGridColumn dataField="causeTerm" width="80" headerText="CAUSE TERM" headerWordWrap="true" wordWrap="true" headerStyleName="centerAlignedBold" textAlign="left"/>
+						<mx:DataGridColumn dataField="causeTrajectory" width="100" headerText="CAUSE TRAJECTORY"  headerWordWrap="true" headerStyleName="centerAlignedBold" textAlign="left"/>
+						<mx:DataGridColumn dataField="effectTerm" width="80" headerText="EFFECT TERM"  headerWordWrap="true" wordWrap="true" headerStyleName="centerAlignedBold" textAlign="left"/>
+						<mx:DataGridColumn dataField="effectTrajectory" width="100" headerText="EFFECT TRAJECTORY" headerWordWrap="true" wordWrap="true" headerStyleName="centerAlignedBold" textAlign="left"/>
+						<mx:DataGridColumn dataField="sourceData" width="80" headerText="SOURCE DATA" headerWordWrap="true" wordWrap="true" headerStyleName="centerAlignedBold" textAlign="left"/>
+						<mx:DataGridColumn dataField="studyType" width="80" headerText="STUDY TYPE" headerWordWrap="true" wordWrap="true" headerStyleName="centerAlignedBold" textAlign="left"/>
+						<mx:DataGridColumn dataField="habitat" width="80" headerText="HABITAT" wordWrap="true" headerWordWrap="true" headerStyleName="centerAlignedBold" textAlign="left"/>
+						<mx:DataGridColumn dataField="createUser" width="80" headerText="CREATE USER" headerWordWrap="true" wordWrap="true" headerStyleName="centerAlignedBold" textAlign="left"/>
+						<mx:DataGridColumn dataField="selected" width="70" headerText="SELECT EVIDENCE" headerWordWrap="true" headerStyleName="centerAlignedBold">
+							<mx:itemRenderer>
+								<mx:Component>
+									<mx:HBox horizontalAlign="center" width="100%">
+										<mx:CheckBox change="onChange();" >
+												<mx:Script>  
+													<![CDATA[
+														override public function set data( value:Object ) : void {
+															super.data = value;
+														}
+														private function onChange():void{
+														data.selected = !data.selected;
+																
+															document.evidences.refresh();
+														}
+														
+												]]>
+											            </mx:Script>  
+								      </mx:CheckBox> 
+
+									</mx:HBox>
+								</mx:Component>
+							</mx:itemRenderer>
+						</mx:DataGridColumn>
+					</mx:columns>
+				</mx:DataGrid>
+			</mx:VBox>
+		</mx:FormItem>
+		
+		<mx:FormItem>
+			<mx:HBox horizontalAlign="center">
+				<mx:Button label="Attach Selected Evidence" id="saveb">
+				</mx:Button><mx:Spacer width="10"/>
+		<!--		<mx:Button label="Edit/Add Evidence Details" id="addEditb">
+				</mx:Button><mx:Spacer width="10"/>
+				-->
+				<mx:Button label="Cancel" id="cancelb">
+				</mx:Button>
+				<mx:Spacer width="200"/>
+			</mx:HBox>
+		</mx:FormItem> 
+	</mx:Form>
+</mx:TitleWindow>

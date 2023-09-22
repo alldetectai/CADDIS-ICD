@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" title="Help" width="640" height="250" showCloseButton="true">
+	<mx:VBox height="100%" width="100%">
+			<mx:TextArea  width="100%" borderThickness="0" text="1. To view the current linakges of a shape, double click on the item in the Selected Shapes list." />
+			<mx:TextArea  width="100%" borderThickness="0" text="2. To add an item to the Selected Citations, double click on an item in the Existing Citations or drag and drop an item from the Existing Citations to the Selected Citations."  />
+			<mx:TextArea  width="100%" borderThickness="0" text="3. To remove an item from the Selected Citations, select an item from the list and press the Delete key." />
+	</mx:VBox>
+</mx:TitleWindow>

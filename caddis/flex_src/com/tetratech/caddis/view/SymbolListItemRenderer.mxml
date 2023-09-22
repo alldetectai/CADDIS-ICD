@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" maxHeight="20"
+horizontalScrollPolicy="off" verticalScrollPolicy="off" verticalGap="0" horizontalGap="0">
+<mx:Image id="shapeSymbol" maxWidth="20" maxHeight="20" />
+<mx:Text id="shapeLabel" maxHeight="20"  />
+<mx:Script source="../helper/SymbolListItemRendererHelper.as" />		
+</mx:HBox>
+
+

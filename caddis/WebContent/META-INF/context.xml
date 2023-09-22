@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.-->
+  
+<Context path="/caddis_saijian" debug="0" crossContext="true" privileged="true" reloadable="false" >
+<!--  <Resource auth="Container" name="jdbc/CADDIS_DS" type="javax.sql.DataSource" driverClassName="oracle.jdbc.driver.OracleDriver" 
+    url="jdbc:oracle:thin:@superior.tetratech-ffx.com:1521:tst11gr2"
+	username="CADDIS_DEV" password="devCADDIS0814" /> -->
+	
+	<Resource auth="Container" name="jdbc/CADDIS_DS" type="javax.sql.DataSource" driverClassName="oracle.jdbc.driver.OracleDriver" 
+    url="jdbc:oracle:thin:@10.1.80.60:1521:tst11gr2"
+	username="CADDIS_DEV" password="caddis2016" />
+</Context>
+

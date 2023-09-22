@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow title="Add Term" xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" showCloseButton="true"  width="400" height="300">
+	<mx:Script>
+		<![CDATA[
+			import com.tetratech.caddis.common.Constants;
+		]]>
+	</mx:Script>
+
+<mx:Form defaultButton="{save}" paddingTop="0">
+	<mx:FormItem>
+		<mx:Text id="error"
+			text="Please correct error(s) indicated below." 
+			styleName="errorText" fontWeight="bold" visible="false"/>
+	</mx:FormItem>
+
+	<mx:FormItem label="Term" required="true">
+		<mx:TextInput id="term"  maxChars="200" width="200"></mx:TextInput>
+	</mx:FormItem>
+	<mx:FormItem label="Description" required="true">
+		<mx:TextArea id="desc"  height="75" width="200"  />
+	</mx:FormItem>
+	<mx:FormItem label="Is EEL Term" >
+		<mx:CheckBox id="eelTerm" />
+	</mx:FormItem>
+	<mx:FormItem label="Shape Type">
+		<mx:ComboBox id="shapeType" width="200" textIndent="5">
+			<mx:dataProvider>
+				<mx:Array>
+					<mx:Object label="" icon="" value="0"/>
+					<mx:Object label="Human Activity" icon="{Constants.humanAct}" value="{Constants.HUMAN_ACTIVITY}"/>
+					<mx:Object label="Mode of Action" icon="{Constants.modeAct}" value="{Constants.MODE_OF_ACTION}"/>
+					<mx:Object label="Modifying Factor" icon="{Constants.modFac}" value="{Constants.MODIFIYING_FACTOR}"/>
+					<mx:Object label="Response" icon="{Constants.resp}" value="{Constants.BIOLOGICAL_RESPONSE}"/>
+					<mx:Object label="Source" icon="{Constants.source}" value="{Constants.SOURCE}"/>
+					<mx:Object label="Stressor" icon="{Constants.stressor}" value="{Constants.STRESSOR}"/>
+					<mx:Object label="Addition Steps" icon="{Constants.addStep}" value="{Constants.ADDITIONAL_STEP}"/>
+				</mx:Array>
+			</mx:dataProvider>
+		</mx:ComboBox>
+	</mx:FormItem>
+	<mx:FormItem>
+		<mx:HBox horizontalAlign="center">
+			<mx:Button label="Save" id="save">
+			</mx:Button>
+			<mx:Button label="Cancel" id="cancel">
+			</mx:Button>
+		</mx:HBox>
+	</mx:FormItem>
+</mx:Form>
+<mx:StringValidator id="valTerm" source="{term}" property="text" required="true" minLength="1" maxLength="200"/>
+<mx:StringValidator id="valDesc" source="{desc}" property="text" required="true" minLength="0" maxLength="1000"/>
+</mx:TitleWindow>

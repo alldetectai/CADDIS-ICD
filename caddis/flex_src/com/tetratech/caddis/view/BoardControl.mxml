@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" initialize="init()" 
+width="{Constants.BOARD_CONTROL_WIDTH}" height="{Constants.BOARD_CONTROL_HEIGHT}" >
+<mx:VBox horizontalAlign="center">
+<mx:Tile direction="horizontal" borderStyle="none" horizontalGap="0" verticalGap="0" 
+         paddingTop="0" paddingBottom="0" paddingLeft="0" paddingRight="0" 
+         borderThickness="0">
+            <mx:Spacer height="15" width="15"/>
+            <mx:Image id="up" height="15" width="15" source="{Constants.up}" toolTip="Move Up" />
+            <mx:Spacer height="15" width="15"/>
+            <mx:Image id="left" height="15" width="15" source="{Constants.left}" toolTip="Move Left"/>
+            <mx:Image id="center" height="15" width="15" source="{Constants.center}" toolTip="Restore Diagram to Original Position"/>
+            <mx:Image id="right" height="15" width="15" source="{Constants.right}" toolTip="Move Right"/>
+         	<mx:Spacer height="15" width="15"/>
+            <mx:Image id="down"  height="15" width="15" source="{Constants.down}" toolTip="Move Down"/>
+            <mx:Spacer height="15" width="15"/>
+</mx:Tile>
+<mx:Image id="incZoom" width="24" height="24" source="{Constants.zoom_in}" toolTip="Zoom In"/>
+<mx:Image id="decZoom" width="24" height="24" source="{Constants.zoom_out}" toolTip="Zoom Out"/>
+</mx:VBox>
+
+<mx:Script  source="../helper/BoardControlHelper.as" />
+</mx:Canvas>

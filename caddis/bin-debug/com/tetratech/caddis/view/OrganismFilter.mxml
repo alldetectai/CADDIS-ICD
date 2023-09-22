@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" styleName="lightGreenBackground" 
+	horizontalScrollPolicy="off" verticalScrollPolicy="off">
+
+<mx:VBox styleName="lightGreenBackground" height="100%" width="100%" left="2"
+	paddingBottom="0" paddingTop="0" verticalGap="2">
+        <mx:CheckBox id="allOrganisms" label="Select All" />
+    	<mx:Canvas>
+	    	<mx:VBox width="100%" height="100%" left="2" verticalGap="0" horizontalGap="0" paddingBottom="0" paddingTop="0">
+		        <mx:Label text="Select subsets:" />
+	        	<mx:Tile direction="horizontal"
+	                horizontalGap="10" verticalGap="0" 
+	                paddingTop="2" paddingBottom="2" paddingLeft="10" paddingRight="10">
+	                <mx:Repeater id="rp" > 
+			           <mx:CheckBox id="organismFilters"  label="{rp.currentItem.code}" />
+			        </mx:Repeater>
+	       		 </mx:Tile>
+	    	</mx:VBox>		
+    	</mx:Canvas>
+    	 <mx:HRule width="100%" /> 
+</mx:VBox>	
+<mx:Script source="../helper/OrganismFilterHelper.as" />
+</mx:Canvas>

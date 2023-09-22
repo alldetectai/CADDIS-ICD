@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" verticalGap="0" paddingBottom="0" paddingTop="0"
+	backgroundAlpha="0" borderThickness="0" borderStyle="none" creationComplete="init()">
+	<mx:Script>
+		<![CDATA[
+			import flash.net.navigateToURL;
+		]]>
+	</mx:Script>
+	
+		<mx:HBox width="100%" height="100%" horizontalGap="0">
+			<mx:VBox id="home" width="100" height="100%" styleName="selectedTab" horizontalAlign="center">
+				<mx:Label text="Home" color="white"  styleName="boldLabel" textAlign="center" />
+			</mx:VBox>
+			<mx:VBox id="edit" width="100" height="100%" styleName="unselectedTab" horizontalAlign="center">
+				<mx:Label text="Create/Edit" color="white" styleName="boldLabel" textAlign="center" />
+			</mx:VBox>
+			<mx:VBox id="link" visible="true" width="100" height="100%" styleName="unselectedTab" horizontalAlign="center" includeInLayout="false">
+				<mx:Label text="Link" color="white"  styleName="boldLabel" textAlign="center" />
+			</mx:VBox>
+				<mx:VBox id="view" width="100" height="100%" styleName="unselectedTab" horizontalAlign="center">
+				<mx:Label text="View" color="white"  styleName="boldLabel" textAlign="center" />
+			</mx:VBox>
+			<mx:VBox id="search" width="100" height="100%" styleName="unselectedTab" horizontalAlign="center" includeInLayout="false">
+				<!--<mx:Label text="Search" color="white"  styleName="boldLabel" textAlign="center" /> -->
+			</mx:VBox>
+			<mx:Spacer width="50" />
+			<mx:HBox>
+				<mx:Label id="diagramNameLabel" fontWeight="bold" text="Diagram Name:"/>
+				<mx:Label id="diagramName" />
+			</mx:HBox>
+			<mx:Spacer width="90%" />
+			<mx:HBox initialize="initLoginHandlers()">
+
+				<mx:Box styleName="menuLabelWrapper">
+					<mx:Label id="loginb" text="Log In" color="white"
+							  toolTip="Log in using your EPA LAN or EPA Portal username and password, after obtaining CADDIS community access." />
+				</mx:Box>
+				<mx:Box styleName="menuLabelWrapper">
+					<mx:Label id="register" text="Register" color="white" 
+							  toolTip="Register and request access to the CADDIS community using the EPA Portal"
+							  click="navigateToURL(new URLRequest('http://portal.epa.gov'))"/>
+				</mx:Box>
+				<mx:Spacer width="5">
+					
+				</mx:Spacer>
+				<mx:Image id="einfo" source="{Constants.help}" buttonMode="true" toolTip="Help"
+					  click="navigateToURL(new URLRequest('http://safewater.tetratech-ffx.com/NCEA/migrated/index.html'))"/>
+			</mx:HBox>
+		</mx:HBox>
+<mx:Script source="../helper/TabNavigatorHelper.as" />
+<mx:Script source="../helper/LoginHelper.as" /> 
+</mx:VBox>

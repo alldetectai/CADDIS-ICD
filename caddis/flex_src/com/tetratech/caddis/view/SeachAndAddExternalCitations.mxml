@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow title="Search Database(s) by Cause and Effect Terms"  height="680" width="800" horizontalScrollPolicy="off"
+            showCloseButton="true" xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" defaultButton="{searchTerms}">
+
+ 	<mx:VBox id="resultsBox" width="100%" height="100%" paddingLeft="10" paddingBottom="10">
+ 	<mx:Spacer height="10"/>
+ 	
+		<mx:HBox paddingLeft="20" width="100%" horizontalAlign="left">
+			
+			<mx:Text width="80" styleName="messageText"  fontWeight="bold" text="Select Database(s)" />
+			
+			<mx:ComboBox textAlign="left" id="selectDatabase"  width="220" enabled="false">
+			</mx:ComboBox>
+			<mx:Spacer width="10" />
+			<mx:Button id="searchTerms" label="Search" />
+		</mx:HBox>	
+		<mx:Spacer height="20"/>
+		<mx:HRule width="100%" />
+		<mx:Text id="resultsMessage" styleName="messageText"  fontWeight="bold"/>
+		<mx:RadioButtonGroup id="selectedCitation" />
+		<!--<mx:Panel title="AdvancedDataGrid Control Example"
+				  height="75%" width="75%" layout="horizontal"
+				  paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10">
+			
+			<mx:AdvancedDataGrid id="displayCitations" 
+								 width="100%" height="100%" >            
+				<mx:columns>
+					<mx:AdvancedDataGridColumn dataField="effectTerm" headerText="Select Effect Term"/>
+					<mx:AdvancedDataGridColumn dataField="author" width="150" headerText="AUTHOR" wordWrap="true" headerStyleName="centerAlignedBold" textAlign="left"/>
+					<mx:AdvancedDataGridColumn dataField="year" width="60" headerText="YEAR" headerStyleName="centerAlignedBold" textAlign="left"/>
+					<mx:AdvancedDataGridColumn dataField="title" width="350" headerText="TITLE" wordWrap="true" headerStyleName="centerAlignedBold" textAlign="left"/>
+					<mx:AdvancedDataGridColumn dataField="id" width="70" headerText="VIEW EVIDENCE DETAILS" headerWordWrap="true" headerStyleName="centerAlignedBold">
+						<mx:itemRenderer>
+							<mx:Component>
+								<mx:HBox horizontalAlign="center" width="100%">
+									<mx:RadioButton group="{outerDocument.selectedCitation}" />
+								</mx:HBox>
+							</mx:Component>
+						</mx:itemRenderer>
+					</mx:AdvancedDataGridColumn>
+				</mx:columns>
+			</mx:AdvancedDataGrid>
+		</mx:Panel>-->
+		<mx:Repeater id="displayCitations">
+			
+			<mx:VBox width="100%">
+				<mx:Text styleName="messageText"  fontWeight="bold" text="{displayCitations.currentItem.header}"/>
+				<mx:DataGrid id="citations" width="90%" height="95%" rowCount="4" dataProvider="{displayCitations.currentItem.data}" >
+					<mx:columns>
+						<mx:DataGridColumn dataField="author" width="150" headerText="AUTHOR" wordWrap="true" headerStyleName="centerAlignedBold" textAlign="left"/>
+						<mx:DataGridColumn dataField="year" width="60" headerText="YEAR" headerStyleName="centerAlignedBold" textAlign="left"/>
+						<mx:DataGridColumn dataField="title" width="350" headerText="TITLE" wordWrap="true" headerStyleName="centerAlignedBold" textAlign="left"/>
+						<mx:DataGridColumn dataField="id" width="70" headerText="VIEW EVIDENCE DETAILS" headerWordWrap="true" headerStyleName="centerAlignedBold">
+							<mx:itemRenderer>
+								<mx:Component>
+									<mx:HBox horizontalAlign="center" width="100%">
+										<mx:RadioButton group="{outerDocument.selectedCitation}" />
+									</mx:HBox>
+								</mx:Component>
+							</mx:itemRenderer>
+						</mx:DataGridColumn>
+					</mx:columns>
+				</mx:DataGrid>
+				<mx:Spacer height="8" />
+ 			</mx:VBox>	
+		</mx:Repeater> 
+        <!--comment out by Li Li 12/17/2015
+        <mx:Repeater id="displayCitations" >
+        <mx:VBox width="100%">
+         <mx:HBox horizontalAlign="left" horizontalGap="10">
+        	<mx:CheckBox id="citationCB" 
+        		data="{displayCitations.currentItem.id}">       		
+        	</mx:CheckBox>
+        	<mx:Text width="600" maxWidth="600" htmlText="{displayCitations.currentItem.displayTitle}"/>
+         </mx:HBox>	 
+         <mx:HBox>
+			 <mx:LinkBar styleName="linkbar" id="linkbar"  />
+		 </mx:HBox>
+		</mx:VBox>
+        </mx:Repeater>
+		<mx:HRule width="100%" /> 
+        <mx:HBox id="displayCitationsB" horizontalAlign="center" width="100%">
+            <mx:Button id="selectAllCitationsb" label="Select All" />
+            <mx:Button id="clearAllCitaionsb" label="Clear All" />
+        	<mx:Button id="saveCitaionsb" label="Save Selected" />
+        	<mx:Button id="closeb" label="Close"  />
+        </mx:HBox>	-->						
+	</mx:VBox>
+
+</mx:TitleWindow>

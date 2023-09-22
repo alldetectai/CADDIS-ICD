@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" initialize="init()" 
+width="{Constants.INSET_WIDTH}" height="{Constants.INSET_HEIGHT}" 
+maxHeight="192" maxWidth="256">
+<mx:Canvas id="insetBoard" width="100%" height="100%" >
+<mx:Script source="../helper/InsetHelper.as" />
+</mx:Canvas>
+</mx:Canvas>

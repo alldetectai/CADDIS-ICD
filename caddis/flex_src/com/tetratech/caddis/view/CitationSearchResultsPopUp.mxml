@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow title="Text Search Results" maxHeight="500" maxWidth="700" height="500" width="700" horizontalScrollPolicy="off"
+            showCloseButton="true" xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+
+ 	<mx:VBox id="resultsBox" width="100%" height="100%" paddingLeft="10" paddingBottom="10">
+		<mx:Text id="resultsMessage" styleName="messageText"  fontWeight="bold"/>
+        
+        <mx:Repeater id="displayCitations" >
+        <mx:VBox width="100%">
+         <mx:HBox horizontalAlign="left" horizontalGap="10">
+        	<mx:CheckBox id="citationCB" 
+        		data="{displayCitations.currentItem.id}">       		
+        	</mx:CheckBox>
+        	<mx:Text width="600" maxWidth="600" htmlText="{displayCitations.currentItem.displayTitle}"/>
+         </mx:HBox>	 
+         <mx:HBox>
+			 <mx:LinkBar styleName="linkbar" id="linkbar"  />
+			 <mx:Spacer width="5" />
+			 <mx:Text id="inCadlit" color="#666666" fontWeight="bold" />
+		 </mx:HBox>
+		</mx:VBox>
+        </mx:Repeater>
+        							
+        <mx:HBox id="displayCitationsB" horizontalAlign="center" width="100%">
+            <mx:Button id="selectAllCitationsb" label="Select All" />
+            <mx:Button id="clearAllCitaionsb" label="Clear All" />
+        	<mx:Button id="downloadCitaionsb" label="Download Selected" />
+        	<mx:Button id="closeb" label="Close"  />
+        </mx:HBox>							
+	</mx:VBox>
+
+</mx:TitleWindow>

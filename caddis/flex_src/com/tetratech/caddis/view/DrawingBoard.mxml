@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"  width="100%" height="100%" backgroundColor="gray" xmlns:view="com.tetratech.caddis.view.*" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+<mx:WipeDown id="wd" duration="500" />
+<mx:WipeUp id="wu" duration="500" /> 
+<!-- controls and menus -->
+<view:Inset id="inset" x="60" y="20" hideEffect="{wu}" showEffect="{wd}" width="{Constants.INSET_WIDTH}" height="{Constants.INSET_HEIGHT}" visible="false" />
+<view:BoardControl id="boardControl" x="10" y="20" width="{Constants.BOARD_CONTROL_WIDTH}" height="{Constants.BOARD_CONTROL_HEIGHT}"/>
+<view:Accordion id="accordion" hideEffect="{wu}" showEffect="{wd}" x="776" y="0" width="{Constants.ACCORDION_WIDTH}" height="{Constants.ACCORDION_HEIGHT}" visible="false" />
+<view:Legend x="127" y="0" id="legend" hideEffect="{wu}" showEffect="{wd}" width="{400}" height="{380}" visible="false" />
+
+<!-- main canvas 	-->
+<mx:Canvas id="board"  creationComplete="init()"  backgroundColor="white" width="{Constants.DEFAULT_BOARD_WIDTH}" height="{Constants.DEFAULT_BOARD_HEIGHT}" horizontalScrollPolicy="off" verticalScrollPolicy="off" />
+<mx:Script source="../helper/DrawingBoardHelper.as"></mx:Script>
+<mx:Script source="../helper/ManageLinkagesHelper.as"></mx:Script> 	
+</mx:Canvas>
+

@@ -1,0 +1,332 @@
+/* CSS file */
+    
+    global
+	{
+      modal-transparency : 0.9;
+	}
+	
+	Button 
+	{
+	   paddingLeft: 1;
+	   paddingRight: 1;
+	   textRollOverColor: #446666;
+	   themeColor: #009dff;
+	   fontSize: 9;
+	   fontWeight: bold;
+	   
+	}
+	TitleWindow 
+	{
+		closeButtonSkin: Embed("../images/cancel.png");
+
+		closeButtonDisabledSkin: ClassReference(null);
+		closeButtonDownSkin: ClassReference(null);
+		closeButtonOverSkin: ClassReference(null);
+		closeButtonUpSkin: ClassReference(null);
+	}
+	Panel 
+	{
+	   /*borderColor: #999933;*/
+	   /*backgroundColor: #446666;
+	   backgroundGradientColors: #9bafb9, #68808c;
+	   backgroundGradientAlphas: 1, 1;*/
+	   /*borderColor:#8A5C5C; #446666;*/
+
+	   borderColor: #446666;
+	   borderAlpha: 0.8;
+	   titleStyleName: "panelTitle";
+	   vertical-scroll-bar-style-name: "panelVScrollBar";
+	   horizontal-scroll-bar-style-name: "panelHScrollBar";
+	}
+
+	.panelTitle {
+   		/*color: #000000;*/
+   		color: #FFFFFF;
+   		fontWeight: bold;
+   		fontSize: 11;
+	}
+
+	.panelVScrollBar 
+	{
+	   fillColors: #446666, #446666, #A9C6C6, #A9C6C6;
+	   trackColors: #A9C6C6, #e7e7e7;
+	   themeColor: #416262;
+	}
+	
+	.panelHScrollBar 
+	{
+	   fillColors: #446666, #446666, #A9C6C6, #A9C6C6;
+	   trackColors: #A9C6C6, #e7e7e7;
+	   themeColor: #416262;
+	}
+	
+	.linkBar {
+	 	disabledColor: #aeaab3;
+	 	color:#0000FF;
+	 	fontWeight:bold;
+	 	separatorWidth:0;
+	}
+	
+	VScrollBar 
+	{
+	   /*fillColors: #999933, #999933, #e6e6b3, #e6e6b3;
+	   trackColors: #e6e6b3, #e7e7e7;
+	   themeColor: #c6c653;*/
+	   /* PINK COLOR fillColors: #D9B4B4, #D9B4B4, #F3E7E7, #F3E7E7;
+	   trackColors: #F3E7E7, #e7e7e7;
+	   themeColor: #B97474;*/
+	   fillColors: #446666, #446666, #A9C6C6, #A9C6C6;
+	   trackColors: #A9C6C6, #e7e7e7;
+	   themeColor: #416262;
+	}
+
+	HScrollBar 
+	{
+	   /*fillColors: #999933, #999933, #e6e6b3, #e6e6b3;
+	   trackColors: #e6e6b3, #e7e7e7;
+	   themeColor: #c6c653;*/
+	   /* PINK COLOR
+	   fillColors: #D9B4B4, #D9B4B4, #F3E7E7, #F3E7E7;
+	   trackColors: #F3E7E7, #e7e7e7;
+	   themeColor: #B97474;*/
+	   fillColors: #446666, #446666, #A9C6C6, #A9C6C6;
+	   trackColors: #A9C6C6, #e7e7e7;
+	   themeColor: #416262;
+	}
+
+	ProgressBar 
+	{
+   		trackHeight: 14;
+	}
+	
+	
+	Alert
+	{
+		titleStyleName : "alertTitle";
+		messageStyleName: "alertMessage";
+		fontWeight: normal;
+		fontSize: 12;
+		background-color: #659B9A;
+		/*header-colors : #659B9A, #659B9A;
+		footer-colors : #659B9A, #659B9A;
+	    color : #592D86;*/
+	    borderColor: #659B9A;
+
+	}
+
+	.alertTitle
+	{
+		color: #592D86;
+	 	fontWeight: bold;
+		fontSize: 18;
+	}
+	
+	.alertMessage 
+	{
+		color: white;
+		fontWeight: bold;
+    }
+        
+	.switchButton
+	{
+   	   fillColors: #698491, #698491, #95a9b2, #95a9b2;
+	   themeColor: #999999;
+	   fontSize: 9;
+	}
+	
+	.grayBackground
+	{
+	   backgroundColor: #698591;
+	   backgroundGradientColors: #9bafb9, #68808c;
+	   backgroundGradientAlphas: 1, 1;
+	}
+	
+	.menuBarBackground
+	{
+	   backgroundColor: #446666;
+	   backgroundGradientColors: #9bafb9, #68808c;
+	   backgroundGradientAlphas: 1, 1;
+	}
+	
+	.lightGrayBackground
+	{
+		backgroundColor: #95A9B2;
+		backgroundGradientColors: #9bafb9, #68808c;
+	    backgroundGradientAlphas: 1, 1;
+	}
+	
+	.diagramFilterBackground
+	{
+		backgroundColor: #9DBFBE;
+		backgroundGradientColors: #DAE7E6, #DAE7E6;
+	    backgroundGradientAlphas: 1, 1;
+	}
+	
+	.pinkBackground
+	{
+		backgroundImage: Embed('../images/accordion_tab.png');
+	}
+	
+	.lightGreenBackground
+	{
+		backgroundColor: #F5F9EB;
+		themeColor: #F5F9EB;
+		selectionColor: #F5F9EB;
+		rollOverColor: #F5F9EB;
+	}
+
+	.lightPinkBackground {
+		backgroundColor: #F8F2F2;
+		themeColor: #F8F2F2;
+		selectionColor: #F8F2F2;
+		rollOverColor: #F8F2F2;
+	}
+	
+	.selectedTab
+	{
+		backgroundImage: Embed('../images/selected_tab.png');
+	}
+
+	.unselectedTab
+	{
+		backgroundImage: Embed('../images/unselected_tab.png');
+	}
+
+	.modeLabel
+	{
+		fontWeight: bold;
+		fontSize: 12;
+	}
+
+	.boldLabel
+	{
+		fontWeight: bold;
+		fontSize: 10;
+	}
+	
+	.questionLabel
+	{
+		fontWeight: bold;
+		fontSize: 16;
+	}
+
+	.menuWrapper
+	{
+		cornerRadius: 0;
+		borderStyle: none;
+		borderThickness: 0;
+		font-weight:bold;
+		fontSize: 11;
+		backgroundColor: #9bafb9; /*, #68808c; */
+	}
+
+	.menuLabelWrapper
+	{
+		 cornerRadius: 5;
+		 borderStyle: solid;
+		 borderThickness: 0;
+		 font-weight:bold;
+		 fontSize: 11;
+	}
+	
+	.mouseOverLabel
+	{
+		backgroundColor: #E7ECEE;
+	}
+	
+	.menuIntroLabel
+	{
+        fontFamily: myArialFont;
+        fontSize: 11;
+        textAlign: center;
+   	}
+   	
+   	.menuIntoLabelBox
+   	{
+		backgroundImage: Embed('../images/tab.png');
+		borderStyle: solid;
+		borderThickness: 0;
+		cornerRadius: 5;
+   	}
+   	
+	.accordionScrollBar
+	{
+	   /* FIRST COLOR SCHEME fillColors: #89ae39, #89ae39, #97c13e, #97c13e;
+	   trackColors: #F5F9EB, #F5F9EB;
+	   themeColor: #6a872c;*/
+   	   fillColors: #D9B4B4, #D9B4B4, #F3E7E7, #F3E7E7;
+	   trackColors: #F3E7E7, #e7e7e7;
+	   themeColor: #B97474;
+	}
+	
+
+	.appScrollBar 
+	{
+	   /*fillColors: #cccccc, #cccccc, #ffffff, #eeeeee;
+	   trackColors: #94999b, #e7e7e7;
+	   themeColor: #009dff;
+	   borderColor: #b7babc;
+	   iconColor: #111111;*/
+	   /*green scroll like menu*/
+	   fillColors: #446666, #446666, #A9C6C6, #A9C6C6;
+	   trackColors: #A9C6C6, #e7e7e7;
+	   themeColor: #416262;
+	}
+	
+	.diagramFilterScrollBar
+	{
+	   fillColors: #95a9b2, #95a9b2, #9bafb9, #9bafb9;
+	   trackColors: #9bafb9, #e7e7e7;
+	   themeColor: #95a9b2;
+	   borderColor: #9bafb9;
+	   iconColor: #000000;
+	}
+
+	.errorText 
+	{
+		color: red;
+		fontWeight: bold;
+    }
+   
+	TabNavigator {
+	   tabWidth: 138;
+	   tabStyleName: "myTabs";
+	   firstTabStyleName: "myTabs";
+	   lastTabStyleName: "myTabs";
+	   selectedTabTextStyleName: "mySelectedTabs";
+	}
+
+	.myTabs {
+   		fillColors: #446666, #446666;
+   		color: #FFFFFF;
+	}
+
+	.mySelectedTabs {
+		color: #000000;
+	}
+	
+	DataGrid {
+   		headerColors: #446666, #446666;
+   		 color: #000000;
+   		headerStyleName: "mydataGridHeaderStyle";
+	}
+	.mydataGridHeaderStyle {
+   		color: #ffffff;
+	}
+	
+/*	Button {
+   		fillAlphas: 1, 1, 1, 1;
+   		highlightAlphas: 0, 0;
+   		//fillColors: #75a3a3, #75a3a3, #75a3a3, #75a3a3;
+   		//fillColors: #446666, #446666, #446666, #446666;
+   		fillColors: #9ABCBC, #9ABCBC, #9ABCBC, #9ABCBC;
+   		color: #ffffff;
+   		fontFamily: Verdana;
+  		 fontSize: 11;
+	}
+	*/
+/*
+.deleteIcon{
+   source: Embed('../images/delete.png');
+}*/
+	

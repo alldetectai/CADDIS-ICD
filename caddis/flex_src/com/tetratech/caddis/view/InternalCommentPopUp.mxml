@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow  title="New Comment" xmlns:mx="http://www.adobe.com/2006/mxml" showCloseButton="true" layout="absolute" width="500" height="400">
+
+
+<mx:Text paddingTop="10" paddingLeft="10" fontWeight="bold" 
+	styleName="messageText" id="ctitle"/>
+
+<mx:Form defaultButton="{saveb}" >
+	<mx:FormItem>
+		<mx:Text id="error" paddingTop="10"
+			text="Please correct error(s) indicated below." 
+			styleName="errorText" fontWeight="bold" visible="false"/>
+	</mx:FormItem>
+	
+	<mx:FormItem  label="Comment" required="true">
+		<mx:TextArea id="commentText"  width="320" height="140"  />
+	</mx:FormItem>
+	<mx:FormItem>
+		<mx:Spacer width="100%" height="15" />
+	</mx:FormItem>
+	<mx:FormItem >
+		<mx:HBox horizontalAlign="center">
+			<mx:Button label="Save" id="saveb">
+			</mx:Button>
+			<mx:Button label="Cancel" id="cancelb">
+			</mx:Button>
+		</mx:HBox>
+	</mx:FormItem>
+</mx:Form>
+
+<mx:StringValidator id="valComment" source="{commentText}" property="text" required="true" minLength="0" maxLength="4000"/>
+
+</mx:TitleWindow>

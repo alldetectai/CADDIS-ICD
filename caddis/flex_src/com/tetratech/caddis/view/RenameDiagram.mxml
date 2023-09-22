@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow  title="Rename Diagram" xmlns:mx="http://www.adobe.com/2006/mxml" showCloseButton="true" layout="absolute" width="400" height="350">
+
+		<mx:Form defaultButton="{saveb}" paddingTop="0">
+			<mx:FormItem>
+				<mx:Text id="error" paddingLeft="10"  paddingTop="10"
+				text="Please correct error(s) indicated below." 
+				styleName="errorText" fontWeight="bold" visible="false"/>
+			</mx:FormItem>
+			<mx:FormItem label="Name" required="true">
+				<mx:TextInput id="dname" maxChars="20" width="200" />
+			</mx:FormItem>
+			<mx:FormItem label="Keywords" required="true">
+				<mx:TextInput id="dkeywords" maxChars="250" width="200" />
+			</mx:FormItem>
+			<mx:FormItem label="Location" required="true">
+				<mx:TextInput id="dloc" maxChars="250" width="200" />
+			</mx:FormItem>
+			<mx:FormItem label="Description" required="false">
+				<mx:TextArea id="ddesc"  height="75" width="200"  />
+			</mx:FormItem>
+			<mx:FormItem>
+				<mx:Spacer width="100%" height="15" />
+			</mx:FormItem>
+			<mx:FormItem>
+				<mx:HBox horizontalAlign="center">
+					<mx:Button label="Save" id="saveb"></mx:Button>
+					<mx:Button label="Cancel" id="cancelb"></mx:Button>
+				</mx:HBox>
+			</mx:FormItem>
+		</mx:Form>	
+<mx:StringValidator id="valDName" source="{dname}" property="text" minLength="1" maxLength="40"/>
+<mx:StringValidator id="valDDesc" source="{ddesc}" property="text" required="false" minLength="0" maxLength="250"/>
+<mx:StringValidator id="valDKeywords" source="{dkeywords}" property="text" required="true" minLength="1" maxLength="250"/>
+<mx:StringValidator id="valDLoc" source="{dloc}" property="text" required="true" minLength="0" maxLength="250"/>
+</mx:TitleWindow>

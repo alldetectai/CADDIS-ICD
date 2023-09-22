@@ -1,0 +1,17 @@
+DECLARE 
+  RetVal BOOLEAN;
+  P_UNAME VARCHAR2(32767);
+  P_PASSWORD VARCHAR2(32767);
+
+BEGIN 
+  P_UNAME := 'xlli1';
+  P_PASSWORD := getMD5('1234');
+         
+  RetVal := CADDIS_DEV.IAMLOCATOR.AUTHENTICATE ( P_UNAME, P_PASSWORD );
+ 
+  if RetVal = TRUE then 
+       DBMS_OUTPUT.PUT_LINE('OK');
+  else
+    DBMS_OUTPUT.PUT_LINE('NO');
+  end if;
+END;

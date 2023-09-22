@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow  xmlns:mx="http://www.adobe.com/2006/mxml" title="Help" showCloseButton="true" width="400" height="300">
+	<mx:TextArea width="100%" height="100%" borderThickness="0" themeColor="#FFFFFF" 
+		text="The purpose of the ICD is to provide CADDIS users with relevant source-, stressor-, and response-specific information in an easily accessible, easy-to-understand, and cognitively supportive format. Potential audiences include those trying to identify probable causes of biological stream impairment (i.e., causal assessors) and any other persons trying to learn more about how streams respond to different sources and stressors; thus, the ICD can be thought of as a teaching tool and a causal assessment tool." />
+</mx:TitleWindow>

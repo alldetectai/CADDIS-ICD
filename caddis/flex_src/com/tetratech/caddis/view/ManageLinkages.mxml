@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" title="Shape Linkages" showCloseButton="true" width="800" height="550" xmlns:view="com.tetratech.caddis.view.*">
+<mx:VBox width="100%" >
+	<mx:VBox width="100%" height="430" maxHeight="480" maxWidth="800" paddingLeft="10">
+		<mx:Label id="nolnk" text="No linkages found" visible="false" />
+		<mx:Repeater id="rp">
+			<mx:VBox width="100%" maxWidth="700">
+				<!-- <mx:CheckBox id="lnkIndex" label="{rp.currentItem.label}" /> -->
+				<mx:HBox>
+					<mx:CheckBox id="lnkIndex" />
+					<view:SymbolLabel text="{rp.currentItem.shape1.label}"  symbolType="{rp.currentItem.shape1.labelSymbolType}"  />
+					<mx:Text text="AND" />
+					<view:SymbolLabel text="{rp.currentItem.shape2.label}"  symbolType="{rp.currentItem.shape2.labelSymbolType}"  />
+				</mx:HBox>
+				<mx:Repeater id="rp2" dataProvider="{rp.currentItem.citations}">
+					<mx:Text htmlText="{(rp2.currentIndex+1)+'. '+rp2.currentItem.displayTitle}" width="700" maxWidth="700"/>
+				</mx:Repeater>			
+				<mx:HRule width="100%"/>
+			</mx:VBox>
+		</mx:Repeater>
+	</mx:VBox>
+	<mx:HBox width="100%" height="50" maxHeight="50" maxWidth="800" paddingLeft="10">
+		<mx:Button label="Delete Linkage(s)" id="deleteb" />
+		<mx:Button label="Close" id="closeb" />
+	</mx:HBox>
+</mx:VBox>
+</mx:TitleWindow>

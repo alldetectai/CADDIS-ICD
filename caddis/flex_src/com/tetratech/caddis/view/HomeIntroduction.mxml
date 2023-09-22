@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" borderColor="white" borderThickness="1" borderStyle="solid">
+	
+	<mx:VBox width="100%" paddingTop="40" paddingLeft="20">
+		<mx:Text id="toolDescriptiontext" styleName="messageText" width="85%"
+				 htmlText="Welcome to the CADDIS Interactive Conceptual Diagram (ICD) tool. The ICD tool allows you to collaboratively create and share conceptual model diagrams, then link evidence (e.g., from published studies) to the hypothesized cause-effect relationships depicted in those diagrams. The ICD tool was developed to help users depict hypothesized causal pathways and the scientific support for those pathways."/>
+		<mx:Spacer height="5" />
+		<mx:Text styleName="messageText" text="The ICD tool is organized into 5 tabs: HOME, CREATE/EDIT, LINK, VIEW, and SEARCH."/>	
+		<mx:Text width="85%">
+			<mx:htmlText>
+				<![CDATA[ <li>The <b>HOME</b> tab provides an overview of the ICD tool.</li>]]>
+			</mx:htmlText>
+		</mx:Text>
+		<mx:Text width="85%">
+			<mx:htmlText>
+				<![CDATA[ <li>The <b>CREATE/EDIT</b> tab allows you to create new or modify existing diagrams.</li>]]>
+			
+			</mx:htmlText>
+		</mx:Text>
+		<mx:Text width="85%">
+			<mx:htmlText>
+				<![CDATA[ <li>The <b>LINK</b> tab allows you to associate evidence from published studies to specific cause-effect linkages in your diagrams.</li>]]>
+				
+			</mx:htmlText>
+		</mx:Text>
+	
+		<mx:Text width="85%">
+			<mx:htmlText>
+				<![CDATA[ <li>The <b>VIEW</b> tab allows you to see existing diagrams and the evidence that has been associated with cause-effect linkages.</li>]]>
+				
+			</mx:htmlText>
+		</mx:Text>
+		
+		<mx:Text width="85%">
+			<mx:htmlText>
+				<![CDATA[ <li>The <b>SEARCH</b> tab allows you to conduct text-based searches of existing ecological evidence databases developed by EPA and others.</li>]]>
+				
+			</mx:htmlText>
+		</mx:Text>
+		
+		<mx:Spacer height="5" />
+		<mx:Text width="85%">
+			<mx:htmlText>
+				<![CDATA[<b>Registered users</b> of the ICD tool are able to access all 5 tabs. <b>Public users</b> can create and new diagrams and view EPA-vetted evidence in the database, but are not able to save diagrams, view non-EPA vetted evidence, or access the LINK or VIEW tabs.]]>
+				
+			</mx:htmlText>
+		</mx:Text>
+	
+		<mx:Spacer height="5" />
+	
+		<mx:Text width="85%" text="If you are a registered user, get started by clicking the Log In button at the top right of the screen. If you are a public user who would like to become a registered user, click on the Register button at the top right of the screen, or get started by clicking on the CREATE/EDIT tab." />
+    
+	</mx:VBox>	
+</mx:Canvas>
+
+
+
+
+
+
+

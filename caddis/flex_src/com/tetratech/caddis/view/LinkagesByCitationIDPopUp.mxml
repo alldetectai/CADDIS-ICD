@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow title="Paper-Specific Linkages" maxHeight="500" maxWidth="700" height="500" width="700" horizontalScrollPolicy="off"
+          showCloseButton="true" xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:view="com.tetratech.caddis.view.*">
+
+	<mx:TabNavigator id="tabNav" width="100%" height="100%">
+        
+        <!-- Define each panel using a VBox container. -->
+       <mx:VBox id="ctab1" label="Cause Effect Relationship">
+        	<mx:Text id="causeEffectListMessage" text="What we want to show here?" styleName="messageText"  fontWeight="bold" />
+        	<mx:Text id="ref" width="660" maxWidth="660" />
+        	<mx:HRule width="100%" />
+        	<mx:Repeater id="causeEffectList">
+        		<mx:HBox width="100%" horizontalGap="10" horizontalScrollPolicy="off">
+	        		<view:SymbolLabel text="{causeEffectList.currentItem.causeTerm.term}"  symbolType="{causeEffectList.currentItem.causeTrajectory}"  />
+	        		<view:SymbolLabel text="{causeEffectList.currentItem.effectTerm.term}"  symbolType="{causeEffectList.currentItem.effectTrajectory}"  />
+	        	</mx:HBox>	
+        		<mx:HRule width="100%" />
+        	</mx:Repeater>
+        </mx:VBox>
+        <mx:VBox id="ctab2" label="Diagrams">
+        	<mx:Text id="diagramResultsMessage" styleName="messageText"  fontWeight="bold" />
+        	<mx:Text id="ref1" width="660" maxWidth="660" />
+        	<mx:HRule width="100%" />
+        	<mx:Repeater id="diagramNames">
+        		<mx:Text width="150" maxWidth="150" text="{diagramNames.currentItem}"/>
+        		<mx:HRule width="100%" />
+        	</mx:Repeater>
+        </mx:VBox>
+        
+        <mx:VBox id="ctab3" label="Linkages in open diagram">
+        	<mx:Text id="linkageResultsMessage" styleName="messageText"  fontWeight="bold" />
+        	<mx:Text id="ref2" width="660" maxWidth="660" />
+        	<mx:HRule width="100%" />
+        	<mx:Repeater id="displayLinkages">
+         	<mx:HBox horizontalAlign="left" horizontalGap="10">
+         		<mx:Text width="150" maxWidth="150" text="{displayLinkages.currentItem.diagramName}"/>
+        		<!--
+        		<mx:Text width="350" maxWidth="350" text="{displayLinkages.currentItem.shape1.label} AND {displayLinkages.currentItem.shape2.label}"/>
+         		-->
+       
+	         	<mx:HBox width="100%" horizontalGap="0" horizontalScrollPolicy="off">
+	        		<view:SymbolLabel text="{displayLinkages.currentItem.shape1.label}"  symbolType="{displayLinkages.currentItem.shape1.labelSymbolType}"  />
+	        		<mx:Text text="AND" visible="{displayLinkages.currentItem.shape1.label.length != 0}" />
+	        		<view:SymbolLabel text="{displayLinkages.currentItem.shape2.label}"  symbolType="{displayLinkages.currentItem.shape2.labelSymbolType}"  />
+	        	</mx:HBox>	
+	         </mx:HBox>
+	         	 
+			<mx:HRule width="100%" />
+        	</mx:Repeater>
+        </mx:VBox>
+        
+	</mx:TabNavigator>
+
+</mx:TitleWindow>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow title="Abstract" maxHeight="500" maxWidth="500" height="500" width="500" horizontalScrollPolicy="off"
+            showCloseButton="true" xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+	<mx:VBox height="100%" paddingLeft="10" paddingBottom="10">
+		<mx:Text id="resultsMessage" styleName="messageText"  fontWeight="bold"  />
+        <mx:Text id="ref" width="460" maxWidth="460" />
+        <mx:HRule width="100%" />
+		<mx:Text width="450" maxWidth="450" id="abstractText" />
+		
+		<mx:HBox  horizontalAlign="center" width="100%">
+        	<mx:Button id="closeb" label="Close"  />
+        </mx:HBox>
+	</mx:VBox>
+
+</mx:TitleWindow>
